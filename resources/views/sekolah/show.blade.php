@@ -1,5 +1,5 @@
 @extends('layout.main')
-@section('title','Sekolah')
+@section('title','Detail Sekolah')
 
 @section('content')
 <!--begin::Row-->

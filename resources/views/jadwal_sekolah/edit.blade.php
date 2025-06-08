@@ -1,5 +1,5 @@
 @extends('layout.main')
-@section('title','Jadwal Sekolah')
+@section('title','Edit Jadwal Sekolah')
 
 @section('content')
 <!--begin::Row-->
