@@ -13,7 +13,7 @@
             <!--end::Header-->
 
             <!--begin::Form-->
-            <form action="{{ route('jadwal_sekolah.store') }}" method="POST">
+            <form action="{{ route('jadwal_sekolah.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <!--begin::Body-->
                 <div class="card-body">
@@ -57,7 +57,8 @@
 
                 <!--begin::Footer-->
                 <div class="card-footer">
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <a href="{{ route('jadwal_sekolah.index') }}" class="btn btn-secondary">Batal</a>
+                    <button type="submit" class="btn btn-primary">Simpan</button>
                 </div>
                 <!--end::Footer-->
             </form>

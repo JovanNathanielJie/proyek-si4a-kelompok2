@@ -44,6 +44,9 @@
                     <td>{{ $sekolah->alamat_sekolah}}</td>
                 </tr>
             </table>
+                <div class="mt-3 text-end">
+                    <a href="{{ route('siswa.index') }}" class="btn btn-secondary">Kembali</a>
+                </div>
         </div>
       </div>
         <!-- /.card -->

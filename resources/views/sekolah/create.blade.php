@@ -10,7 +10,7 @@
                   <div class="card-header"><div class="card-title"><b>Tambah Sekolah</b></div></div>
                   <!--end::Header-->
                   <!--begin::Form-->
-                  <form action="{{ route('sekolah.store') }}" method="POST">
+                  <form action="{{ route('sekolah.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <!--begin::Body-->
                     <div class="card-body">
@@ -32,7 +32,8 @@
                     <!--end::Body-->
                     <!--begin::Footer-->
                     <div class="card-footer">
-                      <button type="submit" class="btn btn-primary">Submit</button>
+                        <a href="{{ route('sekolah.index') }}" class="btn btn-secondary">Batal</a>
+                      <button type="submit" class="btn btn-primary">Simpan</button>
                     </div>
                     <!--end::Footer-->
                   </form>

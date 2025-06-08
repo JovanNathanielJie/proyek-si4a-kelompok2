@@ -10,7 +10,7 @@
                   <div class="card-header"><div class="card-title"><b>Edit Sekolah</b></div></div>
                   <!--end::Header-->
                   <!--begin::Form-->
-                  <form action="{{ route('sekolah.update', $sekolah->id) }}" method="POST">
+                  <form action="{{ route('sekolah.update', $sekolah->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <!--begin::Body-->
@@ -33,7 +33,8 @@
                     <!--end::Body-->
                     <!--begin::Footer-->
                     <div class="card-footer">
-                      <button type="submit" class="btn btn-primary">Submit</button>
+                        <a href="{{ route('sekolah.index') }}" class="btn btn-secondary">Batal</a>
+                        <button type="submit" class="btn btn-primary">Update</button>
                     </div>
                     <!--end::Footer-->
                   </form>

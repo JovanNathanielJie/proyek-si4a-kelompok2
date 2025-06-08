@@ -13,7 +13,7 @@
             <!--end::Header-->
 
             <!--begin::Form-->
-            <form action="{{ route('jadwal_sekolah.update', $jadwalSekolah->id) }}" method="POST">
+            <form action="{{ route('jadwal_sekolah.update', $jadwalSekolah->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
                 <!--begin::Body-->
@@ -61,7 +61,8 @@
 
                 <!--begin::Footer-->
                 <div class="card-footer">
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <a href="{{ route('jadwal_sekolah.index') }}" class="btn btn-secondary">Batal</a>
+                    <button type="submit" class="btn btn-primary">Update</button>
                 </div>
                 <!--end::Footer-->
             </form>
