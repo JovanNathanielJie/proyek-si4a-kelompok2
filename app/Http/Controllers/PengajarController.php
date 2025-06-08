@@ -12,7 +12,11 @@ class PengajarController extends Controller
      */
     public function index()
     {
-        //
+        // Retrieve all teachers using Eloquent
+        $pengajar = Pengajar::all(); // SQL: SELECT * FROM pengajar
+        // dd($pengajar); // Uncomment this line to debug and see the data structure
+        // Return the view with the list of teachers
+        return view('pengajar.index')->with('pengajar', $pengajar);
     }
 
     /**
@@ -20,7 +24,8 @@ class PengajarController extends Controller
      */
     public function create()
     {
-        //
+        // Return the view to create a new teacher
+        return view('pengajar.create');
     }
 
     /**
@@ -28,7 +33,21 @@ class PengajarController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Validate the request data
+        $input = $request->validate([
+            'nama_pengajar' => 'required|string|max:100',
+            'tanggal_masuk_pengajar' => 'required|date',
+            'jenis_kelamin' => 'required|in:L,P',
+            'alamat_pengajar' => 'required|string|max:100',
+            'no_telepon_pengajar' => 'required|string|max:15',
+            'identitas_pc' => 'required|string|max:50'
+        ]);
+
+        // Create a new teacher record
+        Pengajar::create($input);
+
+        // Redirect to the index page with a success message
+        return redirect()->route('pengajar.index')->with('success', 'Pengajar berhasil ditambahkan.');
     }
 
     /**
@@ -36,7 +55,8 @@ class PengajarController extends Controller
      */
     public function show(Pengajar $pengajar)
     {
-        //
+        // Return the view to show the teacher details
+        return view('pengajar.show', compact('pengajar'));
     }
 
     /**
@@ -44,7 +64,8 @@ class PengajarController extends Controller
      */
     public function edit(Pengajar $pengajar)
     {
-        //
+        // Return the view to edit the teacher details
+        return view('pengajar.edit', compact('pengajar'));
     }
 
     /**
@@ -52,7 +73,21 @@ class PengajarController extends Controller
      */
     public function update(Request $request, Pengajar $pengajar)
     {
-        //
+        // Validate the request data
+        $input = $request->validate([
+            'nama_pengajar' => 'required|string|max:100',
+            'tanggal_masuk_pengajar' => 'required|date',
+            'jenis_kelamin' => 'required|in:L,P',
+            'alamat_pengajar' => 'required|string|max:100',
+            'no_telepon_pengajar' => 'required|string|max:15',
+            'identitas_pc' => 'required|string|max:50'
+        ]);
+
+        // Update the teacher record
+        $pengajar->update($input);
+
+        // Redirect to the index page with a success message
+        return redirect()->route('pengajar.index')->with('success', 'Pengajar berhasil diperbarui.');
     }
 
     /**
@@ -60,6 +95,11 @@ class PengajarController extends Controller
      */
     public function destroy(Pengajar $pengajar)
     {
-        //
+        $pengajar = Pengajar::findOrFail($pengajar->id); // Find the teacher by ID or fail
+        // Delete the teacher record
+        $pengajar->delete();
+
+        // Redirect to the index page with a success message
+        return redirect()->route('pengajar.index')->with('success', 'Pengajar berhasil dihapus.');
     }
 }

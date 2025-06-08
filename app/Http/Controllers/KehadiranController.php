@@ -12,7 +12,11 @@ class KehadiranController extends Controller
      */
     public function index()
     {
-        //
+        // Retrieve all attendance records using Eloquent
+        $kehadiran = Kehadiran::all(); // SQL: SELECT * FROM kehadiran
+
+        // Return the view with the list of attendance records
+        return view('kehadiran.index')->with('kehadiran', $kehadiran);
     }
 
     /**
@@ -20,7 +24,8 @@ class KehadiranController extends Controller
      */
     public function create()
     {
-        //
+        // Return the view to create a new attendance record
+        return view('kehadiran.create');
     }
 
     /**
@@ -28,7 +33,18 @@ class KehadiranController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Validate the request data
+        $input = $request->validate([
+            'departemen' => 'required|string|max:50',
+            'tanggal' => 'required|date',
+            'jam_hadir' => 'required|date_format:H:i',
+        ]);
+
+        // Create a new attendance record
+        Kehadiran::create($input);
+
+        // Redirect to the index page with a success message
+        return redirect()->route('kehadiran.index')->with('success', 'Kehadiran berhasil ditambahkan.');
     }
 
     /**
@@ -36,7 +52,8 @@ class KehadiranController extends Controller
      */
     public function show(Kehadiran $kehadiran)
     {
-        //
+        // Return the view to show the attendance details
+        return view('kehadiran.show', compact('kehadiran'));
     }
 
     /**
@@ -44,7 +61,8 @@ class KehadiranController extends Controller
      */
     public function edit(Kehadiran $kehadiran)
     {
-        //
+        // Return the view to edit the attendance record
+        return view('kehadiran.edit', compact('kehadiran'));
     }
 
     /**
@@ -52,7 +70,18 @@ class KehadiranController extends Controller
      */
     public function update(Request $request, Kehadiran $kehadiran)
     {
-        //
+        // Validate the request data
+        $input = $request->validate([
+            'departemen' => 'required|string|max:50',
+            'tanggal' => 'required|date',
+            'jam_hadir' => 'required|date_format:H:i',
+        ]);
+
+        // Update the attendance record
+        $kehadiran->update($input);
+
+        // Redirect to the index page with a success message
+        return redirect()->route('kehadiran.index')->with('success', 'Kehadiran berhasil diperbarui.');
     }
 
     /**
@@ -60,6 +89,11 @@ class KehadiranController extends Controller
      */
     public function destroy(Kehadiran $kehadiran)
     {
-        //
+        $kehadiran = Kehadiran::findOrFail($kehadiran->id);
+        // Delete the attendance record
+        $kehadiran->delete();
+
+        // Redirect to the index page with a success message
+        return redirect()->route('kehadiran.index')->with('success', 'Kehadiran berhasil dihapus.');
     }
 }

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\AbsensiSiswa;
+use App\Models\Siswa;
+use App\Models\Kehadiran;
 use Illuminate\Http\Request;
 
 class AbsensiSiswaController extends Controller
@@ -12,7 +14,11 @@ class AbsensiSiswaController extends Controller
      */
     public function index()
     {
-        //
+        // Retrieve all student attendance records using Eloquent
+        $absensiSiswa = AbsensiSiswa::with(['siswa', 'kehadiran'])->get(); // SQL: SELECT * FROM absensi_siswa JOIN siswa ON absensi_siswa.siswa_id = siswa.id JOIN kehadiran ON absensi_siswa.kehadiran_id = kehadiran.id
+
+        // Return the view with the list of student attendance records
+        return view('absensi_siswa.index')->with('absensiSiswa', $absensiSiswa);
     }
 
     /**
@@ -20,7 +26,12 @@ class AbsensiSiswaController extends Controller
      */
     public function create()
     {
-        //
+        // Retrieve all students and attendance records to populate the dropdowns in the form
+        $siswa = Siswa::all(); // SQL: SELECT * FROM siswa
+        $kehadiran = Kehadiran::all(); // SQL: SELECT * FROM kehadiran
+
+        // Return the view to create a new student attendance record with the lists of students and attendance records
+        return view('absensi_siswa.create', compact('siswa', 'kehadiran'));
     }
 
     /**
@@ -28,7 +39,17 @@ class AbsensiSiswaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Validate the request data
+        $input = $request->validate([
+            'siswa_id' => 'required|exists:siswa,id',
+            'kehadiran_id' => 'required|exists:kehadiran,id',
+        ]);
+
+        // Create a new student attendance record
+        AbsensiSiswa::create($input);
+
+        // Redirect to the index page with a success message
+        return redirect()->route('absensi_siswa.index')->with('success', 'Absensi siswa berhasil ditambahkan.');
     }
 
     /**
@@ -36,7 +57,8 @@ class AbsensiSiswaController extends Controller
      */
     public function show(AbsensiSiswa $absensiSiswa)
     {
-        //
+        // Return the view to show the student attendance details
+        return view('absensi_siswa.show', compact('absensiSiswa'));
     }
 
     /**
@@ -44,7 +66,8 @@ class AbsensiSiswaController extends Controller
      */
     public function edit(AbsensiSiswa $absensiSiswa)
     {
-        //
+        // Return the view to edit the student attendance record
+        return view('absensi_siswa.edit', compact('absensiSiswa'));
     }
 
     /**
@@ -52,7 +75,17 @@ class AbsensiSiswaController extends Controller
      */
     public function update(Request $request, AbsensiSiswa $absensiSiswa)
     {
-        //
+        // Validate the request data
+        $input = $request->validate([
+            'siswa_id' => 'required|exists:siswa,id',
+            'kehadiran_id' => 'required|exists:kehadiran,id',
+        ]);
+
+        // Update the student attendance record
+        $absensiSiswa->update($input);
+
+        // Redirect to the index page with a success message
+        return redirect()->route('absensi_siswa.index')->with('success', 'Absensi siswa berhasil diperbarui.');
     }
 
     /**
@@ -60,6 +93,11 @@ class AbsensiSiswaController extends Controller
      */
     public function destroy(AbsensiSiswa $absensiSiswa)
     {
-        //
+        $absensiSiswa = AbsensiSiswa::findOrFail($absensiSiswa->id); // Find the student attendance record by ID or fail
+        // Delete the student attendance record
+        $absensiSiswa->delete();
+
+        // Redirect to the index page with a success message
+        return redirect()->route('absensi_siswa.index')->with('success', 'Absensi siswa berhasil dihapus.');
     }
 }

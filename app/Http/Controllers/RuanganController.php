@@ -12,7 +12,11 @@ class RuanganController extends Controller
      */
     public function index()
     {
-        //
+        // Retrieve all rooms using Eloquent
+        $ruangan = Ruangan::all(); // SQL: SELECT * FROM ruangan
+        // dd($ruangan); // Uncomment this line to debug and see the data structure
+        // Return the view with the list of rooms
+        return view('ruangan.index')->with('ruangan', $ruangan);
     }
 
     /**
@@ -20,7 +24,8 @@ class RuanganController extends Controller
      */
     public function create()
     {
-        //
+        // Return the view to create a new room
+        return view('ruangan.create');
     }
 
     /**
@@ -28,7 +33,18 @@ class RuanganController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Validate the request data
+        $input = $request->validate([
+            'kode_ruangan' => 'required|string|max:3',
+            'lantai_ruangan' => 'required|integer|min:1|max:10',
+            'jumlah_kursi' => 'required|integer|min:1|max:100'
+        ]);
+
+        // Create a new room record
+        Ruangan::create($input);
+
+        // Redirect to the index page with a success message
+        return redirect()->route('ruangan.index')->with('success', 'Ruangan berhasil ditambahkan.');
     }
 
     /**
@@ -36,7 +52,8 @@ class RuanganController extends Controller
      */
     public function show(Ruangan $ruangan)
     {
-        //
+        // Return the view to show the room details
+        return view('ruangan.show', compact('ruangan'));
     }
 
     /**
@@ -44,7 +61,8 @@ class RuanganController extends Controller
      */
     public function edit(Ruangan $ruangan)
     {
-        //
+        // Return the view to edit the room details
+        return view('ruangan.edit', compact('ruangan'));
     }
 
     /**
@@ -52,7 +70,18 @@ class RuanganController extends Controller
      */
     public function update(Request $request, Ruangan $ruangan)
     {
-        //
+        // Validate the request data
+        $input = $request->validate([
+            'kode_ruangan' => 'required|string|max:3',
+            'lantai_ruangan' => 'required|integer|min:1|max:10',
+            'jumlah_kursi' => 'required|integer|min:1|max:100'
+        ]);
+
+        // Update the room record
+        $ruangan->update($input);
+
+        // Redirect to the index page with a success message
+        return redirect()->route('ruangan.index')->with('success', 'Ruangan berhasil diperbarui.');
     }
 
     /**
@@ -60,6 +89,11 @@ class RuanganController extends Controller
      */
     public function destroy(Ruangan $ruangan)
     {
-        //
+        $ruangan = Ruangan::findOrFail($ruangan->id); // Find the room by ID or fail
+        // Delete the room record
+        $ruangan->delete();
+
+        // Redirect to the index page with a success message
+        return redirect()->route('ruangan.index')->with('success', 'Ruangan berhasil dihapus.');
     }
 }
