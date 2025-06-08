@@ -58,7 +58,7 @@
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger show_confirm"
                             data-toggle="tooltip" title='Delete'
-                            data-nama='{{ $item->hari_sekolah }}'>Delete</button>
+                            data-nama='{{ $item->sekolah->nama_sekolah }}'>Delete</button>
                         </form>
                         @endcan
                     </td>

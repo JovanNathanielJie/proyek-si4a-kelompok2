@@ -30,9 +30,9 @@
                     <div class="mb-3">
                         <label for="jenis_kelamin" class="form-label">Jenis Kelamin</label><br>
                         <input type="radio" name="jenis_kelamin" value="L"
-                            {{ old('jenis_kelamin', $mahasiswa->jenis_kelamin ?? 'L') == 'L' ? 'checked' : '' }}> Laki-laki
+                            {{ old('jenis_kelamin', $siswa->jenis_kelamin ?? 'L') == 'L' ? 'checked' : '' }}> Laki-laki
                         <input type="radio" name="jenis_kelamin" value="P"
-                            {{ old('jenis_kelamin', $mahasiswa->jenis_kelamin ?? 'L') == 'P' ? 'checked' : '' }}> Perempuan
+                            {{ old('jenis_kelamin', $siswa->jenis_kelamin ?? 'L') == 'P' ? 'checked' : '' }}> Perempuan
                         @error('jenis_kelamin')
                         <div class="text-danger">{{ $message }}</div>
                         @enderror
