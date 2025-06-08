@@ -1,5 +1,5 @@
 @extends('layout.main')
-@section('title','Sekolah')
+@section('title','Jadwal Sekolah')
 
 @section('content')
 <!--begin::Row-->
@@ -8,7 +8,7 @@
       <!-- Default box -->
       <div class="card">
         <div class="card-header">
-          <h3 class="card-title"><b>Detail Sekolah</b></h3>
+          <h3 class="card-title"><b>Detail Jadwal Sekolah</b></h3>
           <div class="card-tools">
             <button
               type="button"
@@ -33,15 +33,27 @@
             <table class="table table-bordered table-striped">
                 <tr>
                     <th>No</th>
-                    <td>{{ $sekolah->id}}</td>
+                    <td>{{ $jadwalSekolah->id }}</td>
                 </tr>
                 <tr>
-                    <th>Nama Sekolah</th>
-                    <td>{{ $sekolah->nama_sekolah}}</td>
+                    <th>Sekolah</th>
+                    <td>{{ $jadwalSekolah->sekolah->nama_sekolah }}</td>
                 </tr>
                 <tr>
-                    <th>Dekan</th>
-                    <td>{{ $sekolah->alamat_sekolah}}</td>
+                    <th>Alamat Sekolah</th>
+                    <td>{{ $jadwalSekolah->sekolah->alamat_sekolah }}</td>
+                </tr>
+                <tr>
+                    <th>Hari Sekolah</th>
+                    <td>{{ $jadwalSekolah->hari_sekolah }}</td>
+                </tr>
+                <tr>
+                    <th>Jam Mulai</th>
+                    <td>{{ $jadwalSekolah->jam_mulai }}</td>
+                </tr>
+                <tr>
+                    <th>Jam Selesai</th>
+                    <td>{{ $jadwalSekolah->jam_selesai }}</td>
                 </tr>
             </table>
         </div>
@@ -51,4 +63,3 @@
 </div>
 <!--end::Row-->
 @endsection
-
