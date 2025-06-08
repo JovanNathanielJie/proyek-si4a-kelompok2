@@ -1,5 +1,5 @@
 @extends('layout.main')
-@section('title','Edit Absensi Siswa')
+@section('title','Tambah Absensi Pengajar')
 
 @section('content')
 <!--begin::Row-->
@@ -9,27 +9,25 @@
         <div class="card card-primary card-outline mb-4">
             <!--begin::Header-->
             <div class="card-header">
-                <h3 class="card-title"><b>Edit Absensi Siswa</b></h3>
+                <h3 class="card-title"><b>Tambah Absensi Pengajar</b></h3>
             </div>
             <!--end::Header-->
 
             <!--begin::Form-->
-            <form action="{{ route('absensi_siswa.update', $absensiSiswa->id) }}" method="POST">
+            <form action="{{ route('absensi_pengajar.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
-                @method('PUT')
                 <div class="card-body">
 
                     <div class="mb-3">
-                        <label for="siswa_id" class="form-label">Nama Siswa</label>
-                        <select name="siswa_id" id="siswa_id" class="form-select">
-                            <option value="">-- Pilih Siswa --</option>
-                            @foreach ($siswa as $item)
+                        <label for="pengajar_id" class="form-label">Nama Pengajar</label>
+                        <select name="pengajar_id" id="pengajar_id" class="form-select">
+                            <option value="">-- Pilih Pengajar --</option>
+                            @foreach ($pengajar as $item)
                                 <option value="{{ $item->id }}">
-                                    {{ $item->nama_siswa }}
-                                </option>
+                                    {{ $item->nama_pengajar }}
                             @endforeach
                         </select>
-                        @error('siswa_id')
+                        @error('pengajar_id')
                         <div class="text-danger">{{ $message }}</div>
                         @enderror
                     </div>
@@ -53,8 +51,8 @@
 
                 <!--begin::Footer-->
                 <div class="card-footer text-end">
-                    <a href="{{ route('absensi_siswa.index') }}" class="btn btn-secondary">Batal</a>
-                    <button type="submit" class="btn btn-primary">Update</button>
+                    <a href="{{ route('absensi_pengajar.index') }}" class="btn btn-secondary">Batal</a>
+                    <button type="submit" class="btn btn-primary">Simpan</button>
                 </div>
                 <!--end::Footer-->
             </form>
