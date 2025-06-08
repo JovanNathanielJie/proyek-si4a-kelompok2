@@ -40,7 +40,7 @@
                     <th>Aksi</th>
                 </tr>
 
-                @foreach ($jadwalSekolah as $index => $item)
+                @foreach ($jadwalSekolah as $item)
                 <tr class="text-center">
                     <td>{{ $item->id}}</td>
                     <td>{{ $item->hari_sekolah }}</td>

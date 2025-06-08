@@ -1,5 +1,5 @@
 @extends('layout.main')
-@section('title','Detail Pengajar')
+@section('title','Detail Jadwal Les')
 
 @section('content')
 <!--begin::Row-->
@@ -8,7 +8,7 @@
         <!--begin::Card-->
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title"><b>Detail Pengajar</b></h3>
+                <h3 class="card-title"><b>Detail Jadwal Les</b></h3>
                 <div class="card-tools">
                     <button type="button" class="btn btn-tool" data-lte-toggle="card-collapse" title="Collapse">
                         <i data-lte-icon="expand" class="bi bi-plus-lg"></i>
@@ -23,35 +23,47 @@
                 <table class="table table-bordered table-striped">
                     <tr>
                         <th>No</th>
-                        <td>{{ $pengajar->id }}</td>
+                        <td>{{ $jadwal_les->id }}</td>
                     </tr>
                     <tr>
-                        <th>Nama Pengajar</th>
-                        <td>{{ $pengajar->nama_pengajar }}</td>
+                        <th>Hari Les</th>
+                        <td>{{ $jadwal_les->hari_les }}</td>
                     </tr>
                     <tr>
-                        <th>Jenis Kelamin</th>
-                        <td>{{ $pengajar->jenis_kelamin == 'L' ? 'Laki-laki' : 'Perempuan' }}</td>
+                        <th>Tanggal Les</th>
+                        <td>{{ $jadwal_les->tanggal_les }}</td>
                     </tr>
                     <tr>
-                        <th>Tanggal Masuk</th>
-                        <td>{{ $pengajar->tanggal_masuk_pengajar }}</td>
+                        <th>Jam Mulai</th>
+                        <td>{{ $jadwal_les->jam_mulai }}</td>
                     </tr>
                     <tr>
-                        <th>Alamat</th>
-                        <td>{{ $pengajar->alamat_pengajar }}</td>
+                        <th>Jam Selesai</th>
+                        <td>{{ $jadwal_les->jam_selesai }}</td>
                     </tr>
                     <tr>
-                        <th>Nomor Telepon</th>
-                        <td>{{ $pengajar->no_telepon_pengajar }}</td>
+                        <th>Mata Pelajaran</th>
+                        <td>{{ $jadwal_les->mata_pelajaran }}</td>
                     </tr>
                     <tr>
-                        <th>Identitas PC</th>
-                        <td>{{ $pengajar->identitas_pc }}</td>
+                        <th>Keterangan</th>
+                        <td>{{ $jadwal_les->keterangan }}</td>
+                    </tr>
+                    <tr>
+                        <th>Ruangan</th>
+                        <td>{{ $jadwal_les->ruangan->kode_ruangan}}</td>
+                    </tr>
+                    <tr>
+                        <th>Lantai Ruangan</th>
+                        <td>{{ $jadwal_les->ruangan->lantai_ruangan}}</td>
+                    </tr>
+                    <tr>
+                        <th>Kapasitas Ruangan</th>
+                        <td>{{ $jadwal_les->ruangan->jumlah_kursi}}</td>
                     </tr>
                 </table>
                 <div class="mt-3 text-end">
-                    <a href="{{ route('pengajar.index') }}" class="btn btn-secondary">Kembali</a>
+                    <a href="{{ route('jadwal_les.index') }}" class="btn btn-secondary">Kembali</a>
                 </div>
             </div>
         </div>
