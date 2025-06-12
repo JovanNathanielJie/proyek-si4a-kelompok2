@@ -40,6 +40,8 @@
                     <th>Nomor Telepon Siswa</th>
                     <th>Nomor Telepon Ortu</th>
                     <th>Asal Sekolah</th>
+                    <th>Bulan Tahun Ajaran Siswa</th>
+                    <th>Kelas<th>
                     <th>Aksi</th>
                 </tr>
                 @foreach ($siswa as $item)
@@ -51,6 +53,8 @@
                     <td>{{ $item->alamat_siswa}}</td>
                     <td>{{ $item->no_telepon_siswa}}</td>
                     <td>{{ $item->no_telepon_orang_tua}}</td>
+                    <td>{{ $item->bulan_tahun_ajaran}}</td>
+                    <td>{{ $item->kelas}}</td>
                     <td>{{ $item->sekolah->nama_sekolah}}</td>
                     <td>
                         <a href="{{ route('siswa.show', $item->id) }}" class="btn btn-info">Show</a>

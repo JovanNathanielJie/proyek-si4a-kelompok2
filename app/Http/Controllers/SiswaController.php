@@ -44,6 +44,7 @@ class SiswaController extends Controller
             'alamat_siswa' => 'required|string|max:100',
             'no_telepon_siswa' => 'required|string|max:15',
             'no_telepon_orang_tua' => 'nullable|string|max:15',
+            'bulan_tahun_ajaran' => 'required|string|max:7',
             'sekolah_id' => 'required|exists:sekolah,id',
         ]);
 
@@ -87,6 +88,7 @@ class SiswaController extends Controller
             'alamat_siswa' => 'required|string|max:100',
             'no_telepon_siswa' => 'required|string|max:15',
             'no_telepon_orang_tua' => 'nullable|string|max:15',
+            'bulan_tahun_ajaran' => 'required|string|max:7',
             'sekolah_id' => 'required|exists:sekolah,id',
         ]);
 

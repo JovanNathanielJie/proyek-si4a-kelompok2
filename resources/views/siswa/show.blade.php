@@ -55,6 +55,14 @@
                         <th>Asal Sekolah</th>
                         <td>{{ $siswa->sekolah->nama_sekolah }}</td>
                     </tr>
+                    <tr>
+                        <th>Bulan Tahun Ajaran Siswa</th>
+                        <td>{{ $siswa->bulan_tahun_ajaran }}</td>
+                    </tr>
+                    <tr>
+                        <th>Kelas</th>
+                        <td>{{ $siswa->kelas }}</td>
+                    </tr>
                 </table>
                 <div class="mt-3 text-end">
                     <a href="{{ route('siswa.index') }}" class="btn btn-secondary">Kembali</a>

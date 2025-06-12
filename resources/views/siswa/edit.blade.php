@@ -84,6 +84,14 @@
                         <div class="text-danger">{{ $message }}</div>
                         @enderror
                     </div>
+
+                    <div class="mb-3">
+                        <label for="bulan_tahun_ajaran" class="form-label">Bulan Tahun Ajaran Siswa</label>
+                        <input type="text" class="form-control" name="bulan_tahun_ajaran" value="{{ old('bulan_tahun_ajaran') ? old('bulan_tahun_ajaran') : $siswa->bulan_tahun_ajaran }}">
+                        @error('bulan_tahun_ajaran')
+                        <div class="text-danger">{{ $message }}</div>
+                        @enderror
+                    </div>
                 </div>
 
                 <!--begin::Footer-->
