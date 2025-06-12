@@ -26,24 +26,8 @@
                         <td>{{ $jadwal_les->id }}</td>
                     </tr>
                     <tr>
-                        <th>Hari Les</th>
-                        <td>{{ $jadwal_les->hari_les }}</td>
-                    </tr>
-                    <tr>
                         <th>Tanggal Les</th>
                         <td>{{ $jadwal_les->tanggal_les }}</td>
-                    </tr>
-                    <tr>
-                        <th>Jam Mulai</th>
-                        <td>{{ $jadwal_les->jam_mulai }}</td>
-                    </tr>
-                    <tr>
-                        <th>Jam Selesai</th>
-                        <td>{{ $jadwal_les->jam_selesai }}</td>
-                    </tr>
-                    <tr>
-                        <th>Mata Pelajaran</th>
-                        <td>{{ $jadwal_les->mata_pelajaran }}</td>
                     </tr>
                     <tr>
                         <th>Keterangan</th>

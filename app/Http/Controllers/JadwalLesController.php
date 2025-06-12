@@ -38,12 +38,8 @@ class JadwalLesController extends Controller
     {
         // Validate the request data
         $input = $request->validate([
-            'hari_les' => 'required|string|max:20',
             'tanggal_les' => 'required|date',
-            'jam_mulai' => 'required|date_format:H:i',
-            'jam_selesai' => 'required|date_format:H:i|after:jam_mulai',
             'keterangan' => 'nullable|string|max:100',
-            'mata_pelajaran' => 'required|string|max:50',
             'ruangan_id' => 'required|exists:ruangan,id'
         ]);
 
@@ -81,12 +77,8 @@ class JadwalLesController extends Controller
     {
         // Validate the request data
         $input = $request->validate([
-            'hari_les' => 'required|string|max:20',
             'tanggal_les' => 'required|date',
-            'jam_mulai' => 'required|date_format:H:i',
-            'jam_selesai' => 'required|date_format:H:i|after:jam_mulai',
             'keterangan' => 'nullable|string|max:100',
-            'mata_pelajaran' => 'required|string|max:50',
             'ruangan_id' => 'required|exists:ruangan,id'
         ]);
 

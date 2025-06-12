@@ -18,41 +18,9 @@
                 @csrf
                 <div class="card-body">
                     <div class="mb-3">
-                        <label for="hari_les" class="form-label">Hari Les</label>
-                        <input type="text" class="form-control" name="hari_les" value="{{ old('hari_les') }}">
-                        @error('hari_les')
-                        <div class="text-danger">{{ $message }}</div>
-                        @enderror
-                    </div>
-
-                    <div class="mb-3">
                         <label for="tanggal_les" class="form-label">Tanggal Les</label>
                         <input type="date" class="form-control" name="tanggal_les" value="{{ old('tanggal_les') }}">
                         @error('tanggal_les')
-                        <div class="text-danger">{{ $message }}</div>
-                        @enderror
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="jam_mulai" class="form-label">Jam Mulai</label>
-                        <input type="time" class="form-control" name="jam_mulai" value="{{ old('jam_mulai') }}">
-                        @error('jam_mulai')
-                        <div class="text-danger">{{ $message }}</div>
-                        @enderror
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="jam_selesai" class="form-label">Jam Selesai</label>
-                        <input type="time" class="form-control" name="jam_selesai" value="{{ old('jam_selesai') }}">
-                        @error('jam_selesai')
-                        <div class="text-danger">{{ $message }}</div>
-                        @enderror
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="mata_pelajaran" class="form-label">Mata Pelajaran</label>
-                        <input type="text" class="form-control" name="mata_pelajaran" value="{{ old('mata_pelajaran') }}">
-                        @error('mata_pelajaran')
                         <div class="text-danger">{{ $message }}</div>
                         @enderror
                     </div>

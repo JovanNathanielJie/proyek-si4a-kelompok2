@@ -33,10 +33,7 @@
                 <table class="table table-bordered table-striped">
                     <tr class="text-center">
                         <th>No</th>
-                        <th>Hari</th>
                         <th>Tanggal</th>
-                        <th>Jam</th>
-                        <th>Mapel</th>
                         <th>Ruangan</th>
                         <th>Keterangan</th>
                         <th>Aksi</th>
@@ -45,12 +42,9 @@
                     @foreach ($jadwalLes as $item)
                     <tr class="text-center">
                         <td>{{ $item->id }}</td>
-                        <td>{{ $item->hari_les }}</td>
                         <td>{{ $item->tanggal_les }}</td>
-                        <td>{{ $item->jam_mulai }} - {{ $item->jam_selesai }}</td>
-                        <td>{{ $item->mata_pelajaran }}</td>
                         <td>{{ $item->ruangan->kode_ruangan}}</td>
-                        <td>{{ $item->keterangan ?? '-' }}</td>
+                        <td>{{ $item->keterangan}}</td>
                         <td>
                             <a href="{{ route('jadwal_les.show', $item->id) }}" class="btn btn-info">Show</a>
                             @can('update', $item)
