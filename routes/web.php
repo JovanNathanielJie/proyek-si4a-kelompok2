@@ -12,6 +12,8 @@ use App\Http\Controllers\SekolahController;
 use App\Http\Controllers\JadwalLesController;
 use App\Http\Controllers\RuanganController;
 use App\Http\Controllers\JadwalSekolahController;
+use App\Http\Controllers\MataPelajaranController;
+use App\Http\Controllers\JadwalMapelController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -40,6 +42,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::resource('absensi_pengajar', AbsensiPengajarController::class);
     Route::resource('kehadiran', KehadiranController::class);
     Route::resource('ruangan', RuanganController::class);
+    Route::resource('mata_pelajaran', MataPelajaranController::class);
+    Route::resource('jadwal_mapel', JadwalMapelController::class);
+
 });
 
 require __DIR__.'/auth.php';
