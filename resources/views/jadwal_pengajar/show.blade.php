@@ -17,12 +17,12 @@
                 <table class="table table-bordered">
                     <tbody>
                         <tr>
-                            <th style="width: 200px;">Nama Pengajar</th>
+                            <th>Nama Pengajar</th>
                             <td>{{ $jadwalPengajar->pengajar->nama_pengajar }}</td>
                         </tr>
                         <tr>
                             <th>Hari Les</th>
-                            <td>{{ $jadwalPengajar->jadwalLes->hari_les }}</td>
+                            <td>{{ $jadwalPengajar->jadwalLes->jadwalMapel->mataPelajaran->hari_les }}</td>
                         </tr>
                         <tr>
                             <th>Tanggal Les</th>
@@ -30,11 +30,12 @@
                         </tr>
                         <tr>
                             <th>Jam</th>
-                            <td>{{ $jadwalPengajar->jadwalLes->jam_mulai }} - {{ $jadwalPengajar->jadwalLes->jam_selesai }}</td>
+                            <td>{{ $jadwalPengajar->jadwalLes->jadwalMapel->mataPelajaran->waktu_mulai }} -
+                                {{ $jadwalPengajar->jadwalLes->->jadwalMapel->mataPelajaran->waktu_selesai }}</td>
                         </tr>
                         <tr>
                             <th>Mata Pelajaran</th>
-                            <td>{{ $jadwalPengajar->jadwalLes->mata_pelajaran }}</td>
+                            <td>{{ $jadwalPengajar->jadwalLes->->jadwalMapel->mataPelajaran->nama_mapel }}</td>
                         </tr>
                         <tr>
                             <th>Ruangan</th>

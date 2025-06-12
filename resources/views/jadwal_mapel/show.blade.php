@@ -1,5 +1,5 @@
 @extends('layout.main')
-@section('title','Detail Jadwal Siswa')
+@section('title','Detail Jadwal Mapel')
 
 @section('content')
 <!--begin::Row-->
@@ -9,7 +9,7 @@
         <div class="card card-primary card-outline mb-4">
             <!--begin::Header-->
             <div class="card-header">
-                <h3 class="card-title"><b>Detail Jadwal Siswa</b></h3>
+                <h3 class="card-title"><b>Detail Jadwal Mapel</b></h3>
             </div>
             <!--end::Header-->
 
@@ -17,33 +17,35 @@
                 <table class="table table-bordered">
                     <tbody>
                         <tr>
-                            <th>Nama Siswa</th>
-                            <td>{{ $jadwalSiswa->siswa->nama_siswa }}</td>
+                            <th>Kode Mata Pelajaran</th>
+                            <td>{{ $jadwalMapel->mataPelajaran->kode_mapel ?? '-' }}</td>
+                        </tr>
+                        <tr>
+                            <th>Nama Mata Pelajaran</th>
+                            <td>{{ $jadwalMapel->mataPelajaran->nama_mapel ?? '-' }}</td>
                         </tr>
                         <tr>
                             <th>Hari Les</th>
-                            <td>{{ $jadwalSiswa->jadwalLes->jadwalMapel->mataPelajaran->hari_les }}</td>
+                            <td>{{ $jadwalMapel->mataPelajaran->hari_les ?? '-' }}</td>
                         </tr>
                         <tr>
                             <th>Tanggal Les</th>
-                            <td>{{ $jadwalSiswa->jadwalLes->tanggal_les }}</td>
+                            <td>{{ $jadwalMapel->jadwalLes->tanggal_les ?? '-' }}</td>
                         </tr>
                         <tr>
                             <th>Jam</th>
-                            <td>{{ $jadwalSiswa->jadwalLes->jadwalMapel->mataPelajaran->waktu_mulai }} -
-                                {{ $jadwalSiswa->jadwalLes->jadwalMapel->mataPelajaran->waktu_selesai }}</td>
-                        </tr>
-                        <tr>
-                            <th>Mata Pelajaran</th>
-                            <td>{{ $jadwalSiswa->jadwalLes->jadwalMapel->mataPelajaran->nama_mapel}}</td>
+                            <td>
+                                {{ $jadwalMapel->mataPelajaran->waktu_mulai ?? '-' }} -
+                                {{ $jadwalMapel->mataPelajaran->waktu_selesai ?? '-' }}
+                            </td>
                         </tr>
                         <tr>
                             <th>Ruangan</th>
-                            <td>{{ $jadwalSiswa->jadwalLes->ruangan->kode_ruangan }}</td>
+                            <td>{{ $jadwalMapel->jadwalLes->ruangan->kode_ruangan ?? '-' }}</td>
                         </tr>
                         <tr>
                             <th>Keterangan</th>
-                            <td>{{ $jadwalSiswa->jadwalLes->keterangan ?? '-' }}</td>
+                            <td>{{ $jadwalMapel->jadwalLes->keterangan ?? '-' }}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -51,7 +53,7 @@
 
             <!--begin::Footer-->
             <div class="card-footer text-end">
-                <a href="{{ route('jadwal_siswa.index') }}" class="btn btn-secondary">Kembali</a>
+                <a href="{{ route('jadwal_mapel.index') }}" class="btn btn-secondary">Kembali</a>
             </div>
             <!--end::Footer-->
         </div>
