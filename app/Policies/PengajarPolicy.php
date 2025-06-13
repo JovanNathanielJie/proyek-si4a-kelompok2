@@ -29,7 +29,7 @@ class PengajarPolicy
      */
     public function create(User $user): bool
     {
-        return false;
+        return $user->role === 'pemilik';
     }
 
     /**
@@ -37,7 +37,7 @@ class PengajarPolicy
      */
     public function update(User $user, Pengajar $pengajar): bool
     {
-        return false;
+        return $user->role === 'pemilik';
     }
 
     /**
@@ -45,7 +45,7 @@ class PengajarPolicy
      */
     public function delete(User $user, Pengajar $pengajar): bool
     {
-        return false;
+        return $user->role === 'pemilik';
     }
 
     /**

@@ -29,7 +29,7 @@ class AbsensiPengajarPolicy
      */
     public function create(User $user): bool
     {
-        return false;
+        return $user->role === 'pemilik';
     }
 
     /**
@@ -37,7 +37,7 @@ class AbsensiPengajarPolicy
      */
     public function update(User $user, AbsensiPengajar $absensiPengajar): bool
     {
-        return false;
+        return $user->role === 'pemilik';
     }
 
     /**
@@ -45,7 +45,7 @@ class AbsensiPengajarPolicy
      */
     public function delete(User $user, AbsensiPengajar $absensiPengajar): bool
     {
-        return false;
+        return $user->role === 'pemilik';
     }
 
     /**

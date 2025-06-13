@@ -29,7 +29,7 @@ class KehadiranPolicy
      */
     public function create(User $user): bool
     {
-        return false;
+        return $user->role === 'pemilik';
     }
 
     /**
@@ -37,7 +37,7 @@ class KehadiranPolicy
      */
     public function update(User $user, Kehadiran $kehadiran): bool
     {
-        return false;
+        return $user->role === 'pemilik';
     }
 
     /**
@@ -45,7 +45,7 @@ class KehadiranPolicy
      */
     public function delete(User $user, Kehadiran $kehadiran): bool
     {
-        return false;
+        return $user->role === 'pemilik';
     }
 
     /**

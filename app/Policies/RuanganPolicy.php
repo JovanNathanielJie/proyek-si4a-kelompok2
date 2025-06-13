@@ -29,7 +29,7 @@ class RuanganPolicy
      */
     public function create(User $user): bool
     {
-        return false;
+        return $user->role === 'pemilik';
     }
 
     /**
@@ -37,7 +37,7 @@ class RuanganPolicy
      */
     public function update(User $user, Ruangan $ruangan): bool
     {
-        return false;
+        return $user->role === 'pemilik';
     }
 
     /**
@@ -45,7 +45,7 @@ class RuanganPolicy
      */
     public function delete(User $user, Ruangan $ruangan): bool
     {
-        return false;
+        return $user->role === 'pemilik';
     }
 
     /**

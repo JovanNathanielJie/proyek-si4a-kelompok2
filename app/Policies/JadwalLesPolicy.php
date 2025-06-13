@@ -29,7 +29,7 @@ class JadwalLesPolicy
      */
     public function create(User $user): bool
     {
-        return false;
+        return $user->role === 'pemilik';
     }
 
     /**
@@ -37,7 +37,7 @@ class JadwalLesPolicy
      */
     public function update(User $user, JadwalLes $jadwalLes): bool
     {
-        return false;
+        return $user->role === 'pemilik';
     }
 
     /**
@@ -45,7 +45,7 @@ class JadwalLesPolicy
      */
     public function delete(User $user, JadwalLes $jadwalLes): bool
     {
-        return false;
+        return $user->role === 'pemilik';
     }
 
     /**

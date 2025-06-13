@@ -29,7 +29,7 @@ class SiswaPolicy
      */
     public function create(User $user): bool
     {
-        return false;
+        return $user->role === 'pemilik';
     }
 
     /**
@@ -37,7 +37,7 @@ class SiswaPolicy
      */
     public function update(User $user, Siswa $siswa): bool
     {
-        return false;
+        return $user->role === 'pemilik';
     }
 
     /**
@@ -45,7 +45,7 @@ class SiswaPolicy
      */
     public function delete(User $user, Siswa $siswa): bool
     {
-        return false;
+        return $user->role === 'pemilik';
     }
 
     /**

@@ -29,7 +29,7 @@ class AbsensiSiswaPolicy
      */
     public function create(User $user): bool
     {
-        return false;
+        return $user->role === 'pemilik';
     }
 
     /**
@@ -37,7 +37,7 @@ class AbsensiSiswaPolicy
      */
     public function update(User $user, AbsensiSiswa $absensiSiswa): bool
     {
-        return false;
+        return $user->role === 'pemilik';
     }
 
     /**
@@ -45,7 +45,7 @@ class AbsensiSiswaPolicy
      */
     public function delete(User $user, AbsensiSiswa $absensiSiswa): bool
     {
-        return false;
+        return $user->role === 'pemilik';
     }
 
     /**

@@ -29,7 +29,7 @@ class SekolahPolicy
      */
     public function create(User $user): bool
     {
-        return false;
+        return $user->role === 'pemilik';
     }
 
     /**
@@ -37,7 +37,7 @@ class SekolahPolicy
      */
     public function update(User $user, Sekolah $sekolah): bool
     {
-        return false;
+        return $user->role === 'pemilik';
     }
 
     /**
@@ -45,7 +45,7 @@ class SekolahPolicy
      */
     public function delete(User $user, Sekolah $sekolah): bool
     {
-        return false;
+        return $user->role === 'pemilik';
     }
 
     /**
