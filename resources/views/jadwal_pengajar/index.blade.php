@@ -26,10 +26,11 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @php $no = 1; @endphp
                         @foreach ($jadwalPengajar as $item)
                             @foreach ($item->jadwalLes->jadwalMapel as $mapel)
                             <tr class="text-center">
-                                <td>{{ $loop->iteration }}</td>
+                                <td>{{  $no++ }}</td>
                                 <td>{{ $item->jadwalLes->tanggal_les }}</td>
                                 <td>{{ $item->pengajar->nama_pengajar ?? '-' }}</td>
                                 <td>{{ $mapel->mataPelajaran->hari_les ?? '-' }}</td>
