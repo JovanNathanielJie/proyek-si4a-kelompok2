@@ -30,6 +30,9 @@
           </div>
         </div>
         <div class="card-body">
+            @if($ruangan->isEmpty())
+                <p class="text-center">Belum ada data ruangan.</p>
+            @else
             <table class="table table-bordered table-striped">
                 <thead class="text-center">
                     <tr>
@@ -64,6 +67,7 @@
                 @endforeach
                 </tbody>
             </table>
+            @endif
             @can('create', App\Models\Ruangan::class)
             <div class="mt-3 text-end">
                 <a href="{{ route('ruangan.create') }}" class="btn btn-primary">Tambah</a>

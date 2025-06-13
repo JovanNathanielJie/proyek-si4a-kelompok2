@@ -30,6 +30,9 @@
           </div>
         </div>
         <div class="card-body">
+            @if($siswa->isEmpty())
+                <p class="text-center">Belum ada data siswa.</p>
+            @else
             <table class="table table-bordered table-striped">
                 <tr class="text-center">
                     <th>No</th>
@@ -74,6 +77,7 @@
                 </tr>
                 @endforeach
             </table>
+            @endif
             @can('create', App\Models\Siswa::class)
             <div class="mt-3 text-end">
                 <a href="{{ route('siswa.create')}}" class="btn btn-primary">Tambah</a>

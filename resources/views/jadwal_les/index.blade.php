@@ -30,6 +30,9 @@
                 </div>
             </div>
             <div class="card-body">
+                @if($jadwalLes->isEmpty())
+                    <p class="text-center">Belum ada data jadwal les.</p>
+                @else
                 <table class="table table-bordered table-striped">
                     <tr class="text-center">
                         <th>No</th>
@@ -63,7 +66,7 @@
                     </tr>
                     @endforeach
                 </table>
-
+                @endif
                 @can('create', App\Models\JadwalLes::class)
                 <div class="mt-3 text-end">
                     <a href="{{ route('jadwal_les.create') }}" class="btn btn-primary">Tambah</a>

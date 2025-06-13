@@ -30,6 +30,9 @@
           </div>
         </div>
         <div class="card-body">
+            @if($pengajar->isEmpty())
+                <p class="text-center">Belum ada data pengajar.</p>
+            @else
             <table class="table table-bordered table-striped">
                 <tr class="text-center">
                     <th>No</th>
@@ -41,7 +44,7 @@
                     <th>Identitas PC</th>
                     <th>Aksi</th>
                 </tr>
-                @foreach ($siswa as $item)
+                @foreach ($pengajar as $item)
                 <tr class="text-center">
                     <td>{{ $item->id }}</td>
                     <td>{{ $item->nama_pengajar}}</td>
@@ -68,6 +71,7 @@
                 </tr>
                 @endforeach
             </table>
+            @endif
             @can('create', App\Models\Pengajar::class)
             <div class="mt-3 text-end">
                 <a href="{{ route('pengajar.create')}}" class="btn btn-primary">Tambah</a>

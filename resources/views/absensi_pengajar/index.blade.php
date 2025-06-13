@@ -30,6 +30,9 @@
           </div>
         </div>
         <div class="card-body">
+            @if($absensiPengajar->isEmpty())
+                <p class="text-center">Belum ada data absensi pengajar.</p>
+            @else
             <table class="table table-bordered table-striped">
                 <thead class="text-center">
                     <tr>
@@ -66,6 +69,7 @@
                 @endforeach
                 </tbody>
             </table>
+            @endif
             @can('create', App\Models\AbsensiPengajar::class)
             <div class="mt-3 text-end">
                 <a href="{{ route('absensi_pengajar.create') }}" class="btn btn-primary">Tambah</a>

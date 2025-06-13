@@ -139,7 +139,7 @@
                 <i class="bi bi-list"></i>
               </a>
             </li>
-            <li class="nav-item d-none d-md-block"><a href="#" class="nav-link">Home</a></li>
+            <li class="nav-item d-none d-md-block"><a href="url('/')" class="nav-link">Home</a></li>
             <li class="nav-item d-none d-md-block"><a href="#" class="nav-link">Contact</a></li>
           </ul>
           <!--end::Start Navbar Links-->
@@ -164,7 +164,7 @@
                   <div class="d-flex">
                     <div class="flex-shrink-0">
                       <img
-                        src="{{ asset('assets/img/user1-128x128.jpg')}}"
+                        src="{{ asset('img/user3-128x128.jpg')}}"
                         alt="User Avatar"
                         class="img-size-50 rounded-circle me-3"
                       />
@@ -281,7 +281,7 @@
             <li class="nav-item dropdown user-menu">
               <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                 <img
-                  src="{{ asset('assets/img/user2-160x160.jpg')}}"
+                  src="{{ asset('img/profilfoto.png')}}"
                   class="user-image rounded-circle shadow"
                   alt="User Image"
                 />
@@ -291,7 +291,7 @@
                 <!--begin::User Image-->
                 <li class="user-header text-bg-primary">
                   <img
-                    src="{{ asset('assets/img/user2-160x160.jpg')}}"
+                    src="{{ asset('img/profilfoto.png')}}"
                     class="rounded-circle shadow"
                     alt="User Image"
                   />
@@ -344,7 +344,7 @@
           <a class='brand-link' href='/dist/pages/'>
             <!--begin::Brand Image-->
             <img
-  src="{{ asset('foto/umdplogo.png') }}"
+  src="{{ asset('foto/logobimbel.webp') }}"
   alt="Logo Bimbel"
   class="brand-image opacity-75 shadow"
   style="max-height:40px; background: transparent;"
@@ -353,7 +353,7 @@
             <!--begin::Brand Text-->
             <span class="brand-text fw-bold"
       style="font-family: 'Source Sans 3', Arial, sans-serif; font-weight:700; font-size:1.2rem; letter-spacing:0px; color:#3b5998; margin-left:8px;">
-    UMDP Portal
+    Bimbel Alwi
 </span>
             <!--end::Brand Text-->
           </a>
@@ -372,23 +372,35 @@
             >
             <li class="nav-item">
             <a class='nav-link' href='{{ url('dashboard')}}'>
-                <i class="nav-icon bi bi-building"></i>
+                <i class="nav-icon bi bi-house"></i>
                 <p>Dashboard</p>
             </a>
             </li>
 
             <li class="nav-item">
-            <a class='nav-link' href='{{ url('sekolah')}}'>
-                <i class="nav-icon bi bi-building"></i>
-                <p>Sekolah</p>
+                <a class="nav-link d-flex justify-content-between align-items-center" data-bs-toggle="collapse" href="#sekolahSubmenu" role="button" aria-expanded="false" aria-controls="kehadiranSubmenu">
+                <span class="d-flex align-items-center">
+                <i class="nav-icon bi bi-book"></i> <!-- Icon + margin -->
+                <p>Data Sekolah</p>
+                </span>
+            <i class="bi bi-chevron-down"></i>
             </a>
-            </li>
-
-            <li class="nav-item">
-            <a class='nav-link' href='{{ url('jadwal_sekolah')}}'>
-                <i class="nav-icon bi bi-calendar-event"></i>
-                <p>Jadwal Sekolah</p>
-            </a>
+            <div class="collapse ps-3" id="sekolahSubmenu">
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class='nav-link' href='{{ url('sekolah')}}'>
+                    <i class="nav-icon bi bi-building"></i>
+                        <p>Sekolah</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class='nav-link' href='{{ url('jadwal_sekolah')}}'>
+                    <i class="nav-icon bi bi-calendar-event"></i>
+                        <p>Jadwal Sekolah</p>
+                    </a>
+                </li>
+                </ul>
+                </div>
             </li>
 
             <li class="nav-item">
@@ -406,23 +418,9 @@
             </li>
 
             <li class="nav-item">
-            <a class='nav-link' href='{{ url('jadwal_mapel')}}'>
-                <i class="nav-icon bi bi-calendar-range"></i>
-                <p>Jadwal Mata Pelajaran</p>
-            </a>
-            </li>
-
-            <li class="nav-item">
             <a class='nav-link' href='{{ url('siswa')}}'>
                 <i class="nav-icon bi bi-people"></i>
                 <p>Siswa</p>
-            </a>
-            </li>
-
-            <li class="nav-item">
-            <a class='nav-link' href='{{ url('jadwal_siswa')}}'>
-                <i class="nav-icon bi bi-calendar3"></i>
-                <p>Jadwal Siswa</p>
             </a>
             </li>
 
@@ -434,38 +432,70 @@
             </li>
 
             <li class="nav-item">
-            <a class='nav-link' href='{{ url('jadwal_pengajar')}}'>
-                <i class="nav-icon bi bi-calendar-check"></i>
-                <p>Jadwal Pengajar</p>
+                <a class="nav-link d-flex justify-content-between align-items-center" data-bs-toggle="collapse" href="#jadwalSubmenu" role="button" aria-expanded="false" aria-controls="kehadiranSubmenu">
+                <span class="d-flex align-items-center">
+                <i class="nav-icon bi bi-clock"></i> <!-- Icon + margin -->
+                <p>Data Jadwal</p>
+                </span>
+            <i class="bi bi-chevron-down"></i>
             </a>
-            </li>
+            <div class="collapse ps-3" id="jadwalSubmenu">
+            <ul class="nav flex-column">
+                 <li class="nav-item">
+                    <a class='nav-link' href='{{ url('jadwal_les')}}'>
+                    <i class="nav-icon bi bi-easel2"></i>
+                        <p>Jadwal Les</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class='nav-link' href='{{ url('jadwal_siswa')}}'>
+                    <i class="nav-icon bi bi-calendar3"></i>
+                        <p>Jadwal Siswa</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class='nav-link' href='{{ url('jadwal_pengajar')}}'>
+                    <i class="nav-icon bi bi-calendar-check"></i>
+                        <p>Jadwal Pengajar</p>
+                    </a>
+                </li>
+               <li class="nav-item">
+                    <a class='nav-link' href='{{ url('jadwal_mapel')}}'>
+                    <i class="nav-icon bi bi-calendar-range"></i>
+                        <p>Jadwal Mata Pelajaran</p>
+                    </a>
+                </li>
+            </ul>
+            </div>
+        </li>
 
             <li class="nav-item">
-            <a class='nav-link' href='{{ url('jadwal_les')}}'>
-                <i class="nav-icon bi bi-easel2"></i>
-                <p>Jadwal Les</p>
+                <a class="nav-link d-flex justify-content-between align-items-center" data-bs-toggle="collapse" href="#kehadiranSubmenu" role="button" aria-expanded="false" aria-controls="kehadiranSubmenu">
+                <span class="d-flex align-items-center">
+                <i class="nav-icon bi bi-clipboard-data"></i> <!-- Icon + margin -->
+                <p>Data Kehadiran</p>
+                </span>
+            <i class="bi bi-chevron-down"></i>
             </a>
-            </li>
-
-            <li class="nav-item">
-            <a class='nav-link' href='{{ url('kehadiran')}}'>
-                <i class="nav-icon bi bi-clipboard-check"></i>
-                <p>Kehadiran</p>
-            </a>
-            </li>
-
-            <li class="nav-item">
-            <a class='nav-link' href='{{ url('absensi_siswa')}}'>
-                <i class="nav-icon bi bi-check2-square"></i>
-                <p>Kehadiran Siswa</p>
-            </a>
-            </li>
-
-            <li class="nav-item">
-            <a class='nav-link' href='{{ url('absensi_pengajar')}}'>
-                <i class="nav-icon bi bi-check2-square"></i>
-                <p>Kehadiran Pengajar</p>
-            </a>
+            <div class="collapse ps-3" id="kehadiranSubmenu">
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                <a class="nav-link" href="{{ url('kehadiran') }}">
+                    <i class="bi bi-clipboard-check"></i> <p>Kehadiran</p>
+                </a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="{{ url('absensi_siswa') }}">
+                    <i class="bi bi-check2-square"></i> <p>Absensi Siswa</p>
+                </a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="{{ url('absensi_pengajar') }}">
+                    <i class="bi bi-check2-square"></i> <p>Absensi Pengajar</p>
+                </a>
+                </li>
+            </ul>
+                </div>
             </li>
 
 
@@ -512,7 +542,7 @@
         <div class="float-end d-none d-sm-inline"></div>
         <strong>
           Copyright &copy; 2025&nbsp;
-          Universitas MDP.
+          Bimbel Alwi College.
         </strong>
         All rights reserved.
       </footer>

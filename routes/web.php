@@ -14,15 +14,12 @@ use App\Http\Controllers\RuanganController;
 use App\Http\Controllers\JadwalSekolahController;
 use App\Http\Controllers\MataPelajaranController;
 use App\Http\Controllers\JadwalMapelController;
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
 });
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -44,6 +41,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::resource('ruangan', RuanganController::class);
     Route::resource('mata_pelajaran', MataPelajaranController::class);
     Route::resource('jadwal_mapel', JadwalMapelController::class);
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
 });
 
