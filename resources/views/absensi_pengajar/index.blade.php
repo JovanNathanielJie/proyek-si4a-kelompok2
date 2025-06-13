@@ -59,11 +59,13 @@
                         @endcan
 
                         @can('delete', $item)
-                        <form action="{{ route('absensi_pengajar.destroy', $item->id) }}" method="POST" class="d-inline" onsubmit="return confirm('Apakah anda yakin ingin menghapus absensi pengajar ini?');">
+                        <form action="{{ route('absensi_pengajar.destroy', $item->id) }}" method="POST" class="d-inline">
                             @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger">Delete</button>
-                        </form>
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger show_confirm"
+                                data-toggle="tooltip" title='Delete'
+                                data-nama='{{ $item->pengajar->nama_pengajar }}'>Delete</button>
+                            </form>
                         @endcan
                     </td>
                 </tr>

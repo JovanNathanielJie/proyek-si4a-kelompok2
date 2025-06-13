@@ -18,7 +18,7 @@ class AbsensiPengajarController extends Controller
         $absensiPengajar = AbsensiPengajar::with(['pengajar', 'kehadiran'])->get(); // SQL: SELECT * FROM absensi_pengajar JOIN pengajar ON absensi_pengajar.pengajar_id = pengajar.id JOIN kehadiran ON absensi_pengajar.kehadiran_id = kehadiran.id
 
         // Return the view with the list of teacher attendance records
-        return view('absensi_pengajar.index')->with('absensiPengajar', $absensiPengajar);
+        return view('absensi_pengajar.index', compact('absensiPengajar'));
     }
 
     /**
@@ -79,7 +79,7 @@ class AbsensiPengajarController extends Controller
     public function update(Request $request, $absensiPengajar)
     {
         $absensiPengajar = AbsensiPengajar::findOrFail($absensiPengajar);
-        if($request->user()->cannot('update', AbsensiPengajar::class)) {
+        if($request->user()->cannot('update', $absensiPengajar)) {
             abort(403, 'Unauthorized action.');
         }
         // Validate the request data
@@ -99,7 +99,7 @@ class AbsensiPengajarController extends Controller
     public function destroy(Request $request, AbsensiPengajar $absensiPengajar)
     {
         $absensiPengajar = AbsensiPengajar::findOrFail($absensiPengajar->id); // Find the teacher attendance record by ID or fail
-        if($request->user()->cannot('delete', AbsensiPengajar::class)) {
+        if($request->user()->cannot('delete', $absensiPengajar)) {
             abort(403, 'Unauthorized action.');
         }
         // Delete the teacher attendance record
