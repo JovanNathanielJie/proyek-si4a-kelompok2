@@ -77,13 +77,15 @@ class JadwalSekolahController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, JadwalSekolah $jadwalSekolah)
+    public function update(Request $request, $jadwalSekolah)
     {
-        $jadwalSekolah = JadwalSekolah::FindOrFail($jadwalSekolah);
+        $jadwalSekolah = JadwalSekolah::findOrFail($jadwalSekolah);
         // Cek izin update
+
         if ($request->user()->cannot('update', $jadwalSekolah)) {
             abort(403, 'Unauthorized action.');
         }
+
         // Validate the request data
         $input = $request->validate([
             'hari_sekolah' => 'required|string|max:20',

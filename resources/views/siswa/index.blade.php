@@ -42,9 +42,9 @@
                     <th>Alamat Siswa</th>
                     <th>Nomor Telepon Siswa</th>
                     <th>Nomor Telepon Ortu</th>
-                    <th>Asal Sekolah</th>
                     <th>Bulan Tahun Ajaran Siswa</th>
-                    <th>Kelas<th>
+                    <th>Kelas</th>
+                    <th>Asal Sekolah</th>
                     <th>Aksi</th>
                 </tr>
                 @foreach ($siswa as $item)

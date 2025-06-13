@@ -15,5 +15,6 @@ class MataPelajaran extends Model
         'waktu_mulai',
         'waktu_selesai'
     ];
+    
 
 }

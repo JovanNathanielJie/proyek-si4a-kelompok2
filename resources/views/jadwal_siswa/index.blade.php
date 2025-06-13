@@ -47,10 +47,14 @@
                     <tr class="text-center">
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $item->siswa->nama_siswa ?? '-' }}</td>
-                        <td>{{ $item->jadwalLes->hari_les ?? '-' }}</td>
                         <td>
-                            {{ $item->jadwalLes->jam_mulai ?? '-' }} -
-                            {{ $item->jadwalLes->jam_selesai ?? '-' }}
+                            @foreach ( $item->jadwalLes->jadwalMapel as $item)
+                                {{ $item->mataPelajaran->hari_les }}
+                            @endforeach
+                        </td>
+                        <td>
+                            {{ $item->jadwalLes->jadwalMapel ?? '-' }} -
+                            {{ $item->jadwalLes->jadwalMapel ?? '-' }}
                         </td>
                         <td>{{ $item->jadwalLes->mata_pelajaran ?? '-' }}</td>
                         <td>
@@ -64,7 +68,7 @@
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger show_confirm"
                                 data-toggle="tooltip" title='Delete'
-                                data-nama='{{ $item->siswa->nama_siswa }}'>Delete</button>
+                                data-nama='{{ $item }}'>Delete</button>
                             </form>
                             @endcan
                         </td>

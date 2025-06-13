@@ -23,27 +23,27 @@
                 <table class="table table-bordered table-striped">
                     <tr>
                         <th>No</th>
-                        <td>{{ $jadwal_les->id }}</td>
+                        <td>{{ $jadwalLes->id }}</td>
                     </tr>
                     <tr>
                         <th>Tanggal Les</th>
-                        <td>{{ $jadwal_les->tanggal_les }}</td>
+                        <td>{{ $jadwalLes->tanggal_les }}</td>
                     </tr>
                     <tr>
                         <th>Keterangan</th>
-                        <td>{{ $jadwal_les->keterangan }}</td>
+                        <td>{{ $jadwalLes->keterangan }}</td>
                     </tr>
                     <tr>
                         <th>Ruangan</th>
-                        <td>{{ $jadwal_les->ruangan->kode_ruangan}}</td>
+                        <td>{{ $jadwalLes->ruangan->kode_ruangan}}</td>
                     </tr>
                     <tr>
                         <th>Lantai Ruangan</th>
-                        <td>{{ $jadwal_les->ruangan->lantai_ruangan}}</td>
+                        <td>{{ $jadwalLes->ruangan->lantai_ruangan}}</td>
                     </tr>
                     <tr>
                         <th>Kapasitas Ruangan</th>
-                        <td>{{ $jadwal_les->ruangan->jumlah_kursi}}</td>
+                        <td>{{ $jadwalLes->ruangan->jumlah_kursi}}</td>
                     </tr>
                 </table>
                 <div class="mt-3 text-end">

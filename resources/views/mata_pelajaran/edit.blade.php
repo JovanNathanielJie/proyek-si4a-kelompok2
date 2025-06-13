@@ -14,14 +14,14 @@
             <!--end::Header-->
 
             <!--begin::Form-->
-            <form action="{{ route('mata_pelajaran.update', $mata_pelajaran->id) }}" method="POST">
+            <form action="{{ route('mata_pelajaran.update', $mataPelajaran->id) }}" method="POST">
                 @csrf
                 @method('PUT')
 
                 <div class="card-body">
                     <div class="mb-3">
                         <label for="kode_mapel" class="form-label">Kode Mapel</label>
-                        <input type="text" class="form-control" name="kode_mapel" value="{{ old('kode_mapel', $mata_pelajaran->kode_mapel) }}">
+                        <input type="text" class="form-control" name="kode_mapel" value="{{ old('kode_mapel', $mataPelajaran->kode_mapel) }}">
                         @error('kode_mapel')
                         <div class="text-danger">{{ $message }}</div>
                         @enderror
@@ -29,7 +29,7 @@
 
                     <div class="mb-3">
                         <label for="nama_mapel" class="form-label">Nama Mapel</label>
-                        <input type="text" class="form-control" name="nama_mapel" value="{{ old('nama_mapel', $mata_pelajaran->nama_mapel) }}">
+                        <input type="text" class="form-control" name="nama_mapel" value="{{ old('nama_mapel', $mataPelajaran->nama_mapel) }}">
                         @error('nama_mapel')
                         <div class="text-danger">{{ $message }}</div>
                         @enderror
@@ -40,7 +40,7 @@
                         <select name="hari_les" class="form-control">
                             <option value="">-- Pilih Hari --</option>
                             @foreach(['Senin','Selasa','Rabu','Kamis','Jumat','Sabtu','Minggu'] as $hari)
-                                <option value="{{ $hari }}" {{ old('hari_les', $mata_pelajaran->hari_les) == $hari ? 'selected' : '' }}>{{ $hari }}</option>
+                                <option value="{{ $hari }}" {{ old('hari_les', $mataPelajaran->hari_les) == $hari ? 'selected' : '' }}>{{ $hari }}</option>
                             @endforeach
                         </select>
                         @error('hari_les')
@@ -50,7 +50,7 @@
 
                     <div class="mb-3">
                         <label for="waktu_mulai" class="form-label">Waktu Mulai</label>
-                        <input type="time" class="form-control" name="waktu_mulai" value="{{ old('waktu_mulai', $mata_pelajaran->waktu_mulai) }}">
+                        <input type="time" class="form-control" name="waktu_mulai" value="{{ old('waktu_mulai', $mataPelajaran->waktu_mulai) }}">
                         @error('waktu_mulai')
                         <div class="text-danger">{{ $message }}</div>
                         @enderror
@@ -58,7 +58,7 @@
 
                     <div class="mb-3">
                         <label for="waktu_selesai" class="form-label">Waktu Selesai</label>
-                        <input type="time" class="form-control" name="waktu_selesai" value="{{ old('waktu_selesai', $mata_pelajaran->waktu_selesai) }}">
+                        <input type="time" class="form-control" name="waktu_selesai" value="{{ old('waktu_selesai', $mataPelajaran->waktu_selesai) }}">
                         @error('waktu_selesai')
                         <div class="text-danger">{{ $message }}</div>
                         @enderror

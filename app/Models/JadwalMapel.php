@@ -15,7 +15,7 @@ class JadwalMapel extends Model
 
     public function mataPelajaran()
     {
-        return $this->belongsTo(MataPelajaran::class, 'mata_pelajaran_id');
+        return $this->belongsTo(MataPelajaran::class, 'mata_pelajaran_id', 'id');
     }
     public function jadwalLes()
     {

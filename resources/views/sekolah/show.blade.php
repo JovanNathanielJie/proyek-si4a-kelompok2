@@ -45,7 +45,7 @@
                 </tr>
             </table>
                 <div class="mt-3 text-end">
-                    <a href="{{ route('siswa.index') }}" class="btn btn-secondary">Kembali</a>
+                    <a href="{{ route('sekolah.index') }}" class="btn btn-secondary">Kembali</a>
                 </div>
         </div>
       </div>

@@ -43,7 +43,7 @@ class SiswaController extends Controller
         // Validate the request data
         $input = $request->validate([
             'nama_siswa' => 'required|string|max:100',
-            'tanggal_masuk' => 'required|date',
+            'tanggal_masuk_siswa' => 'required|date',
             'jenis_kelamin' => 'required|in:L,P',
             'alamat_siswa' => 'required|string|max:100',
             'no_telepon_siswa' => 'required|string|max:15',
