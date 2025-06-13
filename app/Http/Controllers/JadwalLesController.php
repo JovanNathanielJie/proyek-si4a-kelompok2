@@ -56,8 +56,9 @@ class JadwalLesController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(JadwalLes $jadwalLes)
+    public function show(JadwalLes $jadwalLes, $id)
     {
+        $jadwalLes = JadwalLes::with('ruangan')->findOrFail($id);
         // Return the view to show the lesson schedule details
         return view('jadwal_les.show', compact('jadwalLes'));
     }

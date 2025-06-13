@@ -72,7 +72,7 @@ class KehadiranController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Kehadiran $kehadiran)
+    public function update(Request $request, $kehadiran)
     {
         $kehadiran = Kehadiran::findOrFail($kehadiran);
         // Cek izin update

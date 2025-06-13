@@ -77,7 +77,7 @@ class AbsensiSiswaController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, AbsensiSiswa $absensiSiswa)
+    public function update(Request $request, $absensiSiswa)
     {
         $absensiSiswa = AbsensiSiswa::findOrFail($absensiSiswa);
         // Cek izin update

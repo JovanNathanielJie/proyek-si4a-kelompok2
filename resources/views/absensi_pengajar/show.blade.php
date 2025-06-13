@@ -22,10 +22,6 @@
             <div class="card-body">
                 <table class="table table-bordered table-striped">
                     <tr>
-                        <th>No</th>
-                        <td>{{ $absensiPengajar->id }}</td>
-                    </tr>
-                    <tr>
                         <th>Nama Pengajar</th>
                         <td>{{ $absensiPengajar->pengajar->nama_pengajar }}</td>
                     </tr>

@@ -53,8 +53,9 @@
                             @endforeach
                         </td>
                         <td>
-                            {{ $item->jadwalLes->jadwalMapel ?? '-' }} -
-                            {{ $item->jadwalLes->jadwalMapel ?? '-' }}
+                            @foreach ( $item->jadwalLes->jadwalMapel as $item)
+                                {{ $item->mataPelajaran->waktu_mulai - $item->mataPelajaran->waktu_selesai }}
+                            @endforeach
                         </td>
                         <td>{{ $item->jadwalLes->mata_pelajaran ?? '-' }}</td>
                         <td>

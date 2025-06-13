@@ -56,10 +56,12 @@
                         <a href="{{ route('kehadiran.edit', $item->id) }}" class="btn btn-warning btn-sm">Edit</a>
                         @endcan
                         @can('delete', $item)
-                        <form action="{{ route('kehadiran.destroy', $item->id) }}" method="POST" class="d-inline" onsubmit="return confirm('Apakah anda yakin ingin menghapus kehadiran ini?');">
+                        <form action="{{ route('kehadiran.destroy', $item->id) }}" method="POST" class="d-inline">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                            <button type="submit" class="btn btn-danger show_confirm"
+                            data-toggle="tooltip" title='Delete'
+                            data-nama='{{ $item->departemen }}'>Delete</button>
                         </form>
                         @endcan
                     </td>

@@ -30,7 +30,7 @@
 
                     <div class="mb-3">
                         <label for="tanggal" class="form-label">Tanggal</label>
-                        <input type="date" class="form-control" name="tanggal" value="{{ old('tanggal') ?? $kehadiran->tanggal->format('Y-m-d') }}">
+                        <input type="date" class="form-control" name="tanggal" value="{{ old('tanggal') ?? $kehadiran->tanggal }}">
                         @error('tanggal')
                         <div class="text-danger">{{ $message }}</div>
                         @enderror

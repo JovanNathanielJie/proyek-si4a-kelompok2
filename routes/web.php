@@ -35,7 +35,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::resource('pengajar', PengajarController::class);
     Route::resource('siswa', SiswaController::class);
     Route::resource('sekolah', SekolahController::class);
-    Route::resource('jadwal_les', JadwalLesController::class);
+    Route::resource('jadwal_les', JadwalLesController::class)->parameters([
+    'jadwal_les' => 'jadwalLes'
+]);
     Route::resource('jadwal_sekolah', JadwalSekolahController::class);
     Route::resource('jadwal_pengajar', JadwalPengajarController::class);
     Route::resource('jadwal_siswa', JadwalSiswaController::class);

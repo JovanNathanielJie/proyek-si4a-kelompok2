@@ -74,7 +74,7 @@ class AbsensiPengajarController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, AbsensiPengajar $absensiPengajar)
+    public function update(Request $request, $absensiPengajar)
     {
         $absensiPengajar = AbsensiPengajar::FindOrFail($absensiPengajar);
         if($request->user()->cannot('update', AbsensiPengajar::class)) {
