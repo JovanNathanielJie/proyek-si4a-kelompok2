@@ -79,7 +79,7 @@ class JadwalMapelController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, JadwalMapel $jadwalMapel)
+    public function update(Request $request, $jadwalMapel)
     {
         $jadwalMapel = JadwalMapel::FindOrFail($jadwalMapel);
         // Cek izin update
