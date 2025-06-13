@@ -297,7 +297,7 @@
                   />
                   <p>
                     {{ Auth::user()->name }} - {{ ucfirst((Auth::user()->role)) }}
-                    <small>Member of Universitas MDP</small>
+                    <small>Member of Bimbel Alwi College</small>
                   </p>
                 </li>
                 <!--end::User Image-->
@@ -345,7 +345,7 @@
             <!--begin::Brand Image-->
             <img
   src="{{ asset('foto/umdplogo.png') }}"
-  alt="UMDP Logo"
+  alt="Logo Bimbel"
   class="brand-image opacity-75 shadow"
   style="max-height:40px; background: transparent;"
 />
@@ -370,48 +370,104 @@
               role="menu"
               data-accordion="false"
             >
-                <li class="nav-item">
-                <a class='nav-link' href='{{ url('dashboard')}}'>
-                  <i class="nav-icon bi bi-house"></i>
-                  <p>Dashboard</p>
-                </a>
-                </li>
-              <li class="nav-item">
-                <a class='nav-link' href='{{ url('fakultas')}}'>
-                  <i class="nav-icon bi bi-mortarboard"></i>
-                  <p>Fakultas</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class='nav-link' href='{{ url('prodi')}}'>
-                  <i class="nav-icon bi bi-lightbulb"></i>
-                  <p>Program Studi</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class='nav-link' href='{{ url('mahasiswa')}}'>
-                  <i class="nav-icon bi bi-person-lines-fill"></i>
-                  <p>Mahasiswa</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class='nav-link' href='{{ url('sesi')}}'>
-                  <i class="nav-icon bi bi-building"></i>
-                  <p>Sesi</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class='nav-link' href='{{ url('mata_kuliah')}}'>
-                  <i class="nav-icon bi bi-journals"></i>
-                  <p>Mata Kuliah</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class='nav-link' href='{{ url('jadwal')}}'>
-                  <i class="nav-icon bi bi-calendar-check"></i>
-                  <p>Jadwal</p>
-                </a>
-              </li>
+            <li class="nav-item">
+            <a class='nav-link' href='{{ url('dashboard')}}'>
+                <i class="nav-icon bi bi-building"></i>
+                <p>Dashboard</p>
+            </a>
+            </li>
+
+            <li class="nav-item">
+            <a class='nav-link' href='{{ url('sekolah')}}'>
+                <i class="nav-icon bi bi-building"></i>
+                <p>Sekolah</p>
+            </a>
+            </li>
+
+            <li class="nav-item">
+            <a class='nav-link' href='{{ url('jadwal_sekolah')}}'>
+                <i class="nav-icon bi bi-calendar-event"></i>
+                <p>Jadwal Sekolah</p>
+            </a>
+            </li>
+
+            <li class="nav-item">
+            <a class='nav-link' href='{{ url('ruangan')}}'>
+                <i class="nav-icon bi bi-door-open"></i>
+                <p>Ruangan</p>
+            </a>
+            </li>
+
+            <li class="nav-item">
+            <a class='nav-link' href='{{ url('mata_pelajaran')}}'>
+                <i class="nav-icon bi bi-journal-bookmark"></i>
+                <p>Mata Pelajaran</p>
+            </a>
+            </li>
+
+            <li class="nav-item">
+            <a class='nav-link' href='{{ url('jadwal_mapel')}}'>
+                <i class="nav-icon bi bi-calendar-range"></i>
+                <p>Jadwal Mata Pelajaran</p>
+            </a>
+            </li>
+
+            <li class="nav-item">
+            <a class='nav-link' href='{{ url('siswa')}}'>
+                <i class="nav-icon bi bi-people"></i>
+                <p>Siswa</p>
+            </a>
+            </li>
+
+            <li class="nav-item">
+            <a class='nav-link' href='{{ url('jadwal_siswa')}}'>
+                <i class="nav-icon bi bi-calendar3"></i>
+                <p>Jadwal Siswa</p>
+            </a>
+            </li>
+
+            <li class="nav-item">
+            <a class='nav-link' href='{{ url('pengajar')}}'>
+                <i class="nav-icon bi bi-person-badge"></i>
+                <p>Pengajar</p>
+            </a>
+            </li>
+
+            <li class="nav-item">
+            <a class='nav-link' href='{{ url('jadwal_pengajar')}}'>
+                <i class="nav-icon bi bi-calendar-check"></i>
+                <p>Jadwal Pengajar</p>
+            </a>
+            </li>
+
+            <li class="nav-item">
+            <a class='nav-link' href='{{ url('jadwal_les')}}'>
+                <i class="nav-icon bi bi-easel2"></i>
+                <p>Jadwal Les</p>
+            </a>
+            </li>
+
+            <li class="nav-item">
+            <a class='nav-link' href='{{ url('kehadiran')}}'>
+                <i class="nav-icon bi bi-clipboard-check"></i>
+                <p>Kehadiran</p>
+            </a>
+            </li>
+
+            <li class="nav-item">
+            <a class='nav-link' href='{{ url('absensi_siswa')}}'>
+                <i class="nav-icon bi bi-check2-square"></i>
+                <p>Kehadiran Siswa</p>
+            </a>
+            </li>
+
+            <li class="nav-item">
+            <a class='nav-link' href='{{ url('absensi_pengajar')}}'>
+                <i class="nav-icon bi bi-check2-square"></i>
+                <p>Kehadiran Pengajar</p>
+            </a>
+            </li>
+
 
             </ul>
             <!--end::Sidebar Menu-->
