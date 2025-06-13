@@ -10,6 +10,12 @@
 
 <div class="container mt-4">
     <div class="row">
+        <form method="GET" action="{{ route('dashboard') }}" class="mb-4">
+    <div class="input-group">
+        <input type="text" name="nama_siswa" class="form-control" placeholder="Cari nama siswa..." value="{{ request('nama_siswa') }}">
+        <button class="btn btn-outline-primary" type="submit">Cari</button>
+    </div>
+    </form>
 
         <!-- Jadwal Mapel per Hari -->
         <div class="col-md-6">
@@ -51,10 +57,46 @@
             </div>
         </div>
 
+@if(isset($statistikKehadiranSiswa))
+<div class="col-md-12">
+    <div class="card mb-4">
+        <div class="card-header bg-secondary text-white">Kehadiran Siswa: {{ $namaSiswa }}</div>
+        <div class="card-body">
+            <div id="kehadiranSiswaChart" style="height: 400px;"></div>
+            <p class="mt-3">Persentase Kehadiran: <strong>{{ $persentaseKehadiran }}%</strong></p>
+        </div>
+    </div>
+</div>
+@endif
+
     </div>
 </div>
 
 <script>
+@if(isset($statistikKehadiranSiswa))
+Highcharts.chart('kehadiranSiswaChart', {
+    chart: { type: 'column' },
+    title: { text: 'Kehadiran Siswa: {{ $namaSiswa }}' },
+    xAxis: {
+        categories: ['Hadir', 'Izin', 'Sakit', 'Alpa'],
+        title: { text: 'Status Kehadiran' }
+    },
+    yAxis: {
+        min: 0,
+        title: { text: 'Jumlah Hari' }
+    },
+    series: [{
+        name: 'Jumlah',
+        data: [
+            {{ $statistikKehadiranSiswa['Hadir'] ?? 0 }},
+            {{ $statistikKehadiranSiswa['Izin'] ?? 0 }},
+            {{ $statistikKehadiranSiswa['Sakit'] ?? 0 }},
+            {{ $statistikKehadiranSiswa['Alpa'] ?? 0 }}
+        ]
+    }]
+});
+@endif
+
 // Jadwal Mapel per Hari
 Highcharts.chart('jadwalMapelChart', {
     chart: {

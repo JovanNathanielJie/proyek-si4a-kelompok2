@@ -17,14 +17,14 @@
                     <div class="card-body">
                       <div class="mb-3">
                         <label for="nama_sekolah" class="form-label">Nama Sekolah</label>
-                        <input type="text" class="form-control" name="nama_sekolah" value="{{ old('nama_sekolah') ? old('nama_sekolah') : $fakultas->nama_sekolah}}">
+                        <input type="text" class="form-control" name="nama_sekolah" value="{{ old('nama_sekolah') ? old('nama_sekolah') : $sekolah->nama_sekolah}}">
                         @error('nama_sekolah')
                         <div class="text-danger">{{ $message }}</div>
                         @enderror
                       </div>
                       <div class="mb-3">
                         <label for="alamat_sekolah" class="form-label">Alamat Sekolah</label>
-                        <input type="text" class="form-control" name="alamat_sekolah" value="{{ old('alamat_sekolah') ? old('alamat_sekolah') : $fakultas->alamat_sekolah}}">
+                        <input type="text" class="form-control" name="alamat_sekolah" value="{{ old('alamat_sekolah') ? old('alamat_sekolah') : $sekolah->alamat_sekolah}}">
                         @error('singkatan')
                         <div class="text-danger">{{ $message }}</div>
                         @enderror
