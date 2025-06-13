@@ -13,6 +13,7 @@ class DashboardController extends Controller
 {
    public function index(Request $request)
 {
+    
     // Statistik Jadwal Mapel per Hari
     $jadwalMapelPerHari = MataPelajaran::select('hari_les', DB::raw('count(*) as jumlah'))
         ->groupBy('hari_les')

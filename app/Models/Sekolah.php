@@ -12,4 +12,9 @@ class Sekolah extends Model
         'nama_sekolah',
         'alamat_sekolah',
     ];
+
+    public function jadwalSekolah()
+    {
+        return $this->hasMany(JadwalSekolah::class, 'id_sekolah', 'id');
+    }
 }
