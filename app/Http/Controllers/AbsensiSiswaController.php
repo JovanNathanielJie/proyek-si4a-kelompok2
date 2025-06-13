@@ -69,17 +69,17 @@ class AbsensiSiswaController extends Controller
      */
     public function edit(AbsensiSiswa $absensiSiswa)
     {
-        $absensiSiswa = AbsensiSiswa::FindOrFail($absensiSiswa);
-        // Return the view to edit the student attendance record
-        return view('absensi_siswa.edit', compact('absensiSiswa'));
-    }
+        $siswa = Siswa::all();
+        $kehadiran = Kehadiran::all();
+        return view('absensi_siswa.edit', compact('absensiSiswa', 'siswa', 'kehadiran'));
+}
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, $absensiSiswa)
+    public function update(Request $request, AbsensiSiswa $absensiSiswa)
     {
-        $absensiSiswa = AbsensiSiswa::findOrFail($absensiSiswa);
+        $absensiSiswa = AbsensiSiswa::findOrFail($absensiSiswa->id);
         // Cek izin update
         if ($request->user()->cannot('update', $absensiSiswa)) {
             abort(403, 'Unauthorized action.');

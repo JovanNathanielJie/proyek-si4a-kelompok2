@@ -81,7 +81,7 @@ class JadwalSiswaController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, JadwalSiswa $jadwalSiswa)
+    public function update(Request $request, $jadwalSiswa)
     {
          $jadwalSiswa = JadwalSiswa::findOrFail($jadwalSiswa);
         // Cek izin update

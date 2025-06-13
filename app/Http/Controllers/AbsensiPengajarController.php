@@ -67,8 +67,10 @@ class AbsensiPengajarController extends Controller
      */
     public function edit(AbsensiPengajar $absensiPengajar)
     {
+        $pengajar = Pengajar::all();
+        $kehadiran = Kehadiran::all();
         // Return the view to edit the teacher attendance record
-        return view('absensi_pengajar.edit', compact('absensiPengajar'));
+        return view('absensi_pengajar.edit', compact('absensiPengajar', 'pengajar', 'kehadiran'));
     }
 
     /**
@@ -76,7 +78,7 @@ class AbsensiPengajarController extends Controller
      */
     public function update(Request $request, $absensiPengajar)
     {
-        $absensiPengajar = AbsensiPengajar::FindOrFail($absensiPengajar);
+        $absensiPengajar = AbsensiPengajar::findOrFail($absensiPengajar);
         if($request->user()->cannot('update', AbsensiPengajar::class)) {
             abort(403, 'Unauthorized action.');
         }

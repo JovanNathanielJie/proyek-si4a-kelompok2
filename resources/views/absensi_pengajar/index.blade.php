@@ -57,6 +57,7 @@
                         @can('update', $item)
                         <a href="{{ route('absensi_pengajar.edit', $item->id) }}" class="btn btn-warning">Edit</a>
                         @endcan
+
                         @can('delete', $item)
                         <form action="{{ route('absensi_pengajar.destroy', $item->id) }}" method="POST" class="d-inline" onsubmit="return confirm('Apakah anda yakin ingin menghapus absensi pengajar ini?');">
                             @csrf

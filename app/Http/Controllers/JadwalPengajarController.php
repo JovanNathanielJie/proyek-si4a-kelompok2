@@ -80,9 +80,9 @@ class JadwalPengajarController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, JadwalPengajar $jadwalPengajar)
+    public function update(Request $request, $jadwalPengajar)
     {
-        $jadwalPengajar = JadwalPengajar::FindOrFail($jadwalPengajar);
+        $jadwalPengajar = JadwalPengajar::findOrFail($jadwalPengajar);
         if ($request->user()->cannot('update', $jadwalPengajar)) {
             abort(403, 'Unauthorized action.');
         }

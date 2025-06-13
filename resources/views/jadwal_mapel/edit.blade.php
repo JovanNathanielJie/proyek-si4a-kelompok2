@@ -26,7 +26,8 @@
                             <option value="">-- Pilih Mata Pelajaran --</option>
                             @foreach ($mataPelajaran as $item)
                                 <option value="{{ $item->id }}" {{ (old('mata_pelajaran_id') ?? $jadwalMapel->mata_pelajaran_id) == $item->id ? 'selected' : '' }}>
-                                    {{ $item->kode_mapel }} - {{ $item->nama_mapel }}
+                                    {{ $item->kode_mapel }} - {{ $item->nama_mapel }} - {{ $item->hari_les}} - Waktu:
+                                    {{ $item->waktu_mulai }}-{{$item->waktu_selesai}}
                                 </option>
                             @endforeach
                         </select>
@@ -37,11 +38,11 @@
 
                     <div class="mb-3">
                         <label for="jadwal_les_id" class="form-label">Jadwal Les</label>
-                        <select name="jadwal_les_id" class="form-select">
+                         <select name="jadwal_les_id" class="form-control">
                             <option value="">-- Pilih Jadwal Les --</option>
-                            @foreach ($jadwalLes as $item)
-                                <option value="{{ $item->id }}" {{ (old('jadwal_les_id') ?? $jadwalMapel->jadwal_les_id) == $item->id ? 'selected' : '' }}>
-                                    {{ $item->hari_les }} | {{ $item->jam_mulai }} - {{ $item->jam_selesai }} | {{ $item->ruangan->kode_ruangan ?? '-' }}
+                            @foreach($jadwalLes as $jadwal)
+                                <option value="{{ $jadwal->id }}">
+                                    {{ $jadwal->tanggal_les }} - Ruang: {{ $jadwal->ruangan->kode_ruangan ?? '-' }}
                                 </option>
                             @endforeach
                         </select>

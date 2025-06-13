@@ -1,5 +1,5 @@
 @extends('layout.main')
-@section('title','Tambah Absensi Pengajar')
+@section('title','Edit Absensi Pengajar')
 
 @section('content')
 <!--begin::Row-->
@@ -9,13 +9,14 @@
         <div class="card card-primary card-outline mb-4">
             <!--begin::Header-->
             <div class="card-header">
-                <h3 class="card-title"><b>Tambah Absensi Pengajar</b></h3>
+                <h3 class="card-title"><b>Edit Absensi Pengajar</b></h3>
             </div>
             <!--end::Header-->
 
             <!--begin::Form-->
-            <form action="{{ route('absensi_pengajar.store') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('absensi_pengajar.update', $absensiPengajar->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
+                @method('PUT')
                 <div class="card-body">
 
                     <div class="mb-3">
@@ -23,7 +24,7 @@
                         <select name="pengajar_id" id="pengajar_id" class="form-select">
                             <option value="">-- Pilih Pengajar --</option>
                             @foreach ($pengajar as $item)
-                                <option value="{{ $item->id }}">
+                                <option value="{{ $item->id }}" {{ (old('pengajar_id') ?? $absensiPengajar->pengajar_id) == $item->id ? 'selected' : '' }}>
                                     {{ $item->nama_pengajar }}
                             @endforeach
                         </select>
@@ -37,7 +38,7 @@
                         <select name="kehadiran_id" id="kehadiran_id" class="form-select">
                             <option value="">-- Pilih Kehadiran --</option>
                             @foreach ($kehadiran as $item)
-                                <option value="{{ $item->id }}">
+                                <option value="{{ $item->id }}" {{ (old('kehadiran_id') ?? $absensiPengajar->kehadiran_id) == $item->id ? 'selected' : '' }}>
                                     {{ $item->departemen }} - {{ \Carbon\Carbon::parse($item->tanggal)->format('d M Y') }} - {{ $item->jam_hadir }}
                                 </option>
                             @endforeach

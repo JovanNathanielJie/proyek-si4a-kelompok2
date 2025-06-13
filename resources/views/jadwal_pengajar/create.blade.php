@@ -35,11 +35,11 @@
 
                     <div class="mb-3">
                         <label for="jadwal_les_id" class="form-label">Jadwal Les</label>
-                        <select name="jadwal_les_id" class="form-select">
+                        <select name="jadwal_les_id" class="form-control">
                             <option value="">-- Pilih Jadwal Les --</option>
-                            @foreach ($jadwalLes as $item)
-                                <option value="{{ $item->id }}">
-                                    {{ $item->hari_les }} | {{ $item->jam_mulai }} - {{ $item->jam_selesai }} | {{ $item->mata_pelajaran }}
+                            @foreach($jadwalLes as $jadwal)
+                                <option value="{{ $jadwal->id }}">
+                                    {{ $jadwal->tanggal_les }} - Ruang: {{ $jadwal->ruangan->kode_ruangan ?? '-' }}
                                 </option>
                             @endforeach
                         </select>

@@ -24,7 +24,7 @@
                         <select name="siswa_id" id="siswa_id" class="form-select">
                             <option value="">-- Pilih Siswa --</option>
                             @foreach ($siswa as $item)
-                                <option value="{{ $item->id }}">
+                                <option value="{{ $item->id }}" {{ (old('siswa_id') ?? $absensiSiswa->siswa_id) == $item->id ? 'selected' : '' }}>
                                     {{ $item->nama_siswa }}
                                 </option>
                             @endforeach
@@ -39,7 +39,7 @@
                         <select name="kehadiran_id" id="kehadiran_id" class="form-select">
                             <option value="">-- Pilih Kehadiran --</option>
                             @foreach ($kehadiran as $item)
-                                <option value="{{ $item->id }}">
+                                <option value="{{ $item->id }}" {{ (old('kehadiran_id') ?? $absensiSiswa->kehadiran_id) == $item->id ? 'selected' : '' }}>
                                     {{ $item->departemen }} - {{ \Carbon\Carbon::parse($item->tanggal)->format('d M Y') }} - {{ $item->jam_hadir }}
                                 </option>
                             @endforeach
