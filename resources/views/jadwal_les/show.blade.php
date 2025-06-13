@@ -21,10 +21,7 @@
             </div>
             <div class="card-body">
                 <table class="table table-bordered table-striped">
-                    <tr>
-                        <th>No</th>
-                        <td>{{ $jadwalLes->id }}</td>
-                    </tr>
+
                     <tr>
                         <th>Tanggal Les</th>
                         <td>{{ $jadwalLes->tanggal_les }}</td>

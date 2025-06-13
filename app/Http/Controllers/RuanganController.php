@@ -74,7 +74,7 @@ class RuanganController extends Controller
      */
     public function update(Request $request, $ruangan)
     {
-        $ruangan = Ruangan::FindOrFail($ruangan);
+        $ruangan = Ruangan::findOrFail($ruangan);
         // Cek izin update
         if ($request->user()->cannot('update', $ruangan)) {
             abort(403, 'Unauthorized action.');

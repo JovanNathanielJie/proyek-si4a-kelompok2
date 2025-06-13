@@ -44,7 +44,7 @@
 
                     @foreach ($jadwalLes as $item)
                     <tr class="text-center">
-                        <td>{{ $item->id }}</td>
+                        <td>{{ $loop->iteration }}</td>
                         <td>{{ $item->tanggal_les }}</td>
                         <td>{{ $item->ruangan->kode_ruangan}}</td>
                         <td>{{ $item->keterangan}}</td>

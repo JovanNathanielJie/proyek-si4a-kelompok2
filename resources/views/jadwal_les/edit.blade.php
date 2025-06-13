@@ -14,14 +14,14 @@
             <!--end::Header-->
 
             <!--begin::Form-->
-            <form action="{{ route('jadwal_les.update', $jadwal_les->id) }}" method="POST">
+            <form action="{{ route('jadwal_les.update', $jadwalLes->id) }}" method="POST">
                 @csrf
                 @method('PUT')
 
                 <div class="card-body">
                     <div class="mb-3">
                         <label for="tanggal_les" class="form-label">Tanggal Les</label>
-                        <input type="date" class="form-control" name="tanggal_les" value="{{ old('tanggal_les') ? old('tanggal_les') : $jadwal_les->tanggal_les }}">
+                        <input type="date" class="form-control" name="tanggal_les" value="{{ old('tanggal_les') ? old('tanggal_les') : $jadwalLes->tanggal_les }}">
                         @error('tanggal_les')
                         <div class="text-danger">{{ $message }}</div>
                         @enderror
@@ -29,7 +29,7 @@
 
                     <div class="mb-3">
                         <label for="keterangan" class="form-label">Keterangan</label>
-                        <input type="text" class="form-control" name="keterangan" value="{{ old('keterangan') ? old('keterangan') : $jadwal_les->keterangan }}">
+                        <input type="text" class="form-control" name="keterangan" value="{{ old('keterangan') ? old('keterangan') : $jadwalLes->keterangan }}">
                         @error('keterangan')
                         <div class="text-danger">{{ $message }}</div>
                         @enderror
@@ -40,7 +40,7 @@
                         <select name="ruangan_id" class="form-select">
                             <option value="">-- Pilih Ruangan --</option>
                             @foreach ($ruangan as $r)
-                                <option value="{{ $r->id }}" {{ (old('ruangan_id') ?? $jadwal_les->ruangan_id) == $r->id ? 'selected' : null }}>
+                                <option value="{{ $r->id }}" {{ (old('ruangan_id') ?? $jadwalLes->ruangan_id) == $r->id ? 'selected' : null }}>
                                     {{ $r->kode_ruangan }}
                                 </option>
                             @endforeach

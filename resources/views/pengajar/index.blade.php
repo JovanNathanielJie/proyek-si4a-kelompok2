@@ -46,9 +46,9 @@
                 </tr>
                 @foreach ($pengajar as $item)
                 <tr class="text-center">
-                    <td>{{ $item->id }}</td>
+                    <td>{{ $loop->iteration }}</td>
                     <td>{{ $item->nama_pengajar}}</td>
-                    <td>{{ $item->jenis_kelamin}}</td>
+                    <td>{{ $item->jenis_kelamin== 'L' ? 'Laki-laki' : 'Perempuan'}}</td>
                     <td>{{ $item->tanggal_masuk_pengajar}}</td>
                     <td>{{ $item->alamat_pengajar}}</td>
                     <td>{{ $item->no_telepon_pengajar}}</td>

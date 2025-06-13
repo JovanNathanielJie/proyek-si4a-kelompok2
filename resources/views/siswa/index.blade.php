@@ -49,9 +49,9 @@
                 </tr>
                 @foreach ($siswa as $item)
                 <tr class="text-center">
-                    <td>{{ $item->id }}</td>
+                    <td>{{ $loop->iteration }}</td>
                     <td>{{ $item->nama_siswa}}</td>
-                    <td>{{ $item->jenis_kelamin}}</td>
+                    <td>{{ $item->jenis_kelamin == 'L' ? 'Laki-laki' : 'Perempuan'}}</td>
                     <td>{{ $item->tanggal_masuk_siswa}}</td>
                     <td>{{ $item->alamat_siswa}}</td>
                     <td>{{ $item->no_telepon_siswa}}</td>

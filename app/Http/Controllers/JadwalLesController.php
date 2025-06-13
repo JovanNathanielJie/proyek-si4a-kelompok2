@@ -76,9 +76,9 @@ class JadwalLesController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, JadwalLes $jadwalLes)
+    public function update(Request $request, $jadwalLes)
     {
-        $jadwalLes = JadwalLes::FindOrFail($jadwalLes);
+        $jadwalLes = JadwalLes::findOrFail($jadwalLes);
         // Cek izin update
         if ($request->user()->cannot('update', $jadwalLes)) {
             abort(403, 'Unauthorized action.');

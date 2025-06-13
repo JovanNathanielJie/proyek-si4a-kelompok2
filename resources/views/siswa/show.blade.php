@@ -22,10 +22,6 @@
             <div class="card-body">
                 <table class="table table-bordered table-striped">
                     <tr>
-                        <th>ID</th>
-                        <td>{{ $siswa->id }}</td>
-                    </tr>
-                    <tr>
                         <th>Nama Siswa</th>
                         <td>{{ $siswa->nama_siswa }}</td>
                     </tr>
@@ -37,7 +33,7 @@
                     </tr>
                     <tr>
                         <th>Tanggal Masuk</th>
-                        <td>{{ $siswa->tanggal_masuk }}</td>
+                        <td>{{ $siswa->tanggal_masuk_siswa }}</td>
                     </tr>
                     <tr>
                         <th>Alamat</th>

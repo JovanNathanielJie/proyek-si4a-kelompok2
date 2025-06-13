@@ -56,7 +56,7 @@
 
                     <div class="mb-3">
                         <label for="no_telepon_pengajar" class="form-label">Nomor Telepon Pengajar</label>
-                        <input type="text" class="form-control" name="no_telepon_pengaja" value="{{ old('no_telepon_pengajar') ? old('no_telepon_pengajar') : $pengajar->no_telepon_pengajar }}">
+                        <input type="text" class="form-control" name="no_telepon_pengajar" value="{{ old('no_telepon_pengajar') ? old('no_telepon_pengajar') : $pengajar->no_telepon_pengajar }}">
                         @error('no_telepon_pengajar')
                         <div class="text-danger">{{ $message }}</div>
                         @enderror

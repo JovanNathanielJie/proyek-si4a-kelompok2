@@ -44,7 +44,7 @@ class SiswaController extends Controller
         $input = $request->validate([
             'nama_siswa' => 'required|string|max:100',
             'tanggal_masuk_siswa' => 'required|date',
-            'jenis_kelamin' => 'required|in:L,P',
+            'jenis_kelamin' => 'required',
             'alamat_siswa' => 'required|string|max:100',
             'no_telepon_siswa' => 'required|string|max:15',
             'no_telepon_orang_tua' => 'nullable|string|max:15',
@@ -84,7 +84,7 @@ class SiswaController extends Controller
      */
     public function update(Request $request, Siswa $siswa)
     {
-        $siswa = Siswa::FindOrFail($siswa);
+        $siswa = Siswa::findOrFail($siswa->id);
         // Cek izin update
         if ($request->user()->cannot('update', $siswa)) {
             abort(403, 'Unauthorized action.');
@@ -92,8 +92,8 @@ class SiswaController extends Controller
         // Validate the request data
         $input = $request->validate([
             'nama_siswa' => 'required|string|max:100',
-            'tanggal_masuk' => 'required|date',
-            'jenis_kelamin' => 'required|in:L,P',
+            'tanggal_masuk_siswa' => 'required|date',
+            'jenis_kelamin' => 'required',
             'alamat_siswa' => 'required|string|max:100',
             'no_telepon_siswa' => 'required|string|max:15',
             'no_telepon_orang_tua' => 'nullable|string|max:15',

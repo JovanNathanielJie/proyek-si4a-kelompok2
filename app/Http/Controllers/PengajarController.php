@@ -41,7 +41,7 @@ class PengajarController extends Controller
         $input = $request->validate([
             'nama_pengajar' => 'required|string|max:100',
             'tanggal_masuk_pengajar' => 'required|date',
-            'jenis_kelamin' => 'required|in:L,P',
+            'jenis_kelamin' => 'required',
             'alamat_pengajar' => 'required|string|max:100',
             'no_telepon_pengajar' => 'required|string|max:15',
             'identitas_pc' => 'required|string|max:50'
@@ -75,7 +75,7 @@ class PengajarController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Pengajar $pengajar)
+    public function update(Request $request, $pengajar)
     {
         $pengajar = Pengajar::findOrFail($pengajar);
         // Cek izin update
@@ -86,7 +86,7 @@ class PengajarController extends Controller
         $input = $request->validate([
             'nama_pengajar' => 'required|string|max:100',
             'tanggal_masuk_pengajar' => 'required|date',
-            'jenis_kelamin' => 'required|in:L,P',
+            'jenis_kelamin' => 'required',
             'alamat_pengajar' => 'required|string|max:100',
             'no_telepon_pengajar' => 'required|string|max:15',
             'identitas_pc' => 'required|string|max:50'
