@@ -148,9 +148,10 @@
                 <i class="bi bi-list"></i>
               </a>
             </li>
-            <li class="nav-item d-none d-md-block"><a href="url('/')" class="nav-link">Home</a></li>
-            <li class="nav-item d-none d-md-block"><a href="url('info.blade.php')" class="nav-link">Info</a></li>
+           <li class="nav-item d-none d-md-block"><a href="{{ url('dashboard') }}" class="nav-link">Home</a></li>
+            <li class="nav-item d-none d-md-block"><a href="{{ route('info') }}" class="nav-link">Info</a></li>
             <li class="nav-item d-none d-md-block"><a href="https://linktr.ee/alwicollege" target="_blank" class="nav-link">About Us</a></li>
+
           </ul>
           <!--end::Start Navbar Links-->
           <!--begin::End Navbar Links-->
