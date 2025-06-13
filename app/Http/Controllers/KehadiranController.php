@@ -41,7 +41,7 @@ class KehadiranController extends Controller
         $input = $request->validate([
             'departemen' => 'required|string|max:50',
             'tanggal' => 'required|date',
-            'jam_hadir' => 'required|date_format:H:i',
+            'jam_hadir' => 'required',
         ]);
 
         // Create a new attendance record
@@ -83,7 +83,7 @@ class KehadiranController extends Controller
         $input = $request->validate([
             'departemen' => 'required|string|max:50',
             'tanggal' => 'required|date',
-            'jam_hadir' => 'required|date_format:H:i',
+            'jam_hadir' => 'required',
         ]);
 
         // Update the attendance record

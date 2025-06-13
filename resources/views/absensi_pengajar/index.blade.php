@@ -47,7 +47,7 @@
                 <tbody>
                 @foreach ($absensiPengajar as $item)
                 <tr class="text-center">
-                    <td>{{ $item->id }}</td>
+                    <td>{{ $loop->iteration }}</td>
                     <td>{{ $item->pengajar->nama_pengajar ?? '-' }}</td>
                     <td>{{ $item->kehadiran->departemen ?? '-' }}</td>
                     <td>{{ isset($item->kehadiran->tanggal) ? \Carbon\Carbon::parse($item->kehadiran->tanggal)->format('d M Y') : '-' }}</td>
