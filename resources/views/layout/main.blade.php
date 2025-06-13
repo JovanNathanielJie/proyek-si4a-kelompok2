@@ -68,6 +68,15 @@
         font-weight: 700 !important;
         letter-spacing: 0.02em;
       }
+          .action-btn {
+        color: #6c757d; /* Warna default */
+        transition: color 0.3s ease, transform 0.3s ease; /* Animasi transisi */
+    }
+
+    .action-btn:hover {
+        color: #007bff; /* Warna saat di-hover (biru) */
+        transform: scale(1.2); /* Efek memperbesar tombol */
+    }
       /* Nama user di pojok kanan atas header: font normal, tidak bold, sama seperti body */
       .app-header.navbar .user-menu .nav-link .d-none.d-md-inline {
         font-family: 'Source Sans 3', Arial, sans-serif !important;
@@ -113,14 +122,14 @@
         vertical-align: middle;
       }
       .sidebar-brand {
-  border-bottom: 2px solid #e3eefd !important; /* warna biru muda lembut */
-  box-shadow: none !important;
-  margin-bottom: 0.5rem;
-}
-.sidebar-brand .brand-image {
-  background: transparent !important;
-  box-shadow: none !important;
-}
+        border-bottom: 2px solid #e3eefd !important; /* warna biru muda lembut */
+        box-shadow: none !important;
+        margin-bottom: 0.5rem;
+        }
+        .sidebar-brand .brand-image {
+        background: transparent !important;
+        box-shadow: none !important;
+        }
     </style>
   </head>
   <!--end::Head-->
@@ -140,7 +149,8 @@
               </a>
             </li>
             <li class="nav-item d-none d-md-block"><a href="url('/')" class="nav-link">Home</a></li>
-            <li class="nav-item d-none d-md-block"><a href="#" class="nav-link">Contact</a></li>
+            <li class="nav-item d-none d-md-block"><a href="url('info.blade.php')" class="nav-link">Info</a></li>
+            <li class="nav-item d-none d-md-block"><a href="https://linktr.ee/alwicollege" target="_blank" class="nav-link">About Us</a></li>
           </ul>
           <!--end::Start Navbar Links-->
           <!--begin::End Navbar Links-->
@@ -302,15 +312,6 @@
                 </li>
                 <!--end::User Image-->
                 <!--begin::Menu Body-->
-                <li class="user-body">
-                  <!--begin::Row-->
-                  <div class="row">
-                    <div class="col-4 text-center"><a href="#">Followers</a></div>
-                    <div class="col-4 text-center"><a href="#">Sales</a></div>
-                    <div class="col-4 text-center"><a href="#">Friends</a></div>
-                  </div>
-                  <!--end::Row-->
-                </li>
                 <!--end::Menu Body-->
                 <!--begin::Menu Footer-->
                 <li class="user-footer d-flex justify-content-between">
