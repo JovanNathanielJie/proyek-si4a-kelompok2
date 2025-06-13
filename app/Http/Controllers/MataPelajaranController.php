@@ -42,8 +42,8 @@ class MataPelajaranController extends Controller
             'kode_mapel' => 'required|string|max:10|unique:mata_pelajaran,kode_mapel',
             'nama_mapel' => 'required|string|max:100',
             'hari_les' => 'required|string|max:20',
-            'waktu_mulai' => 'required|date_format:H:i',
-            'waktu_selesai' => 'required|date_format:H:i|after:waktu_mulai',
+            'waktu_mulai' => 'required',
+            'waktu_selesai' => 'required',
         ]);
 
         // Create a new subject record
@@ -74,7 +74,7 @@ class MataPelajaranController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, MataPelajaran $mataPelajaran)
+    public function update(Request $request, $mataPelajaran)
     {
         $mataPelajaran = MataPelajaran::FindOrFail($mataPelajaran);
         // Cek izin update
@@ -86,8 +86,8 @@ class MataPelajaranController extends Controller
             'kode_mapel' => 'required|string|max:10|unique:mata_pelajaran,kode_mapel,' . $mataPelajaran->id,
             'nama_mapel' => 'required|string|max:100',
             'hari_les' => 'required|string|max:20',
-            'waktu_mulai' => 'required|date_format:H:i',
-            'waktu_selesai' => 'required|date_format:H:i|after:waktu_mulai',
+            'waktu_mulai' => 'required',
+            'waktu_selesai' => 'required',
         ]);
 
         // Update the subject record

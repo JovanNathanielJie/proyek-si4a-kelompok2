@@ -89,8 +89,8 @@ class JadwalSekolahController extends Controller
         // Validate the request data
         $input = $request->validate([
             'hari_sekolah' => 'required|string|max:20',
-            'jam_mulai' => 'required|date_format:H:i',
-            'jam_selesai' => 'required|date_format:H:i|after:jam_mulai',
+            'jam_mulai' => 'required',
+            'jam_selesai' => 'required',
             'sekolah_id' => 'required|exists:sekolah,id',
         ]);
 

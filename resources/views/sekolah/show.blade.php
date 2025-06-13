@@ -32,15 +32,11 @@
         <div class="card-body">
             <table class="table table-bordered table-striped">
                 <tr>
-                    <th>No</th>
-                    <td>{{ $sekolah->id}}</td>
-                </tr>
-                <tr>
                     <th>Nama Sekolah</th>
                     <td>{{ $sekolah->nama_sekolah}}</td>
                 </tr>
                 <tr>
-                    <th>Dekan</th>
+                    <th>Alamat Sekolah</th>
                     <td>{{ $sekolah->alamat_sekolah}}</td>
                 </tr>
             </table>

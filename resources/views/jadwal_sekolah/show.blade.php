@@ -32,10 +32,6 @@
         <div class="card-body">
             <table class="table table-bordered table-striped">
                 <tr>
-                    <th>No</th>
-                    <td>{{ $jadwalSekolah->id }}</td>
-                </tr>
-                <tr>
                     <th>Sekolah</th>
                     <td>{{ $jadwalSekolah->sekolah->nama_sekolah }}</td>
                 </tr>

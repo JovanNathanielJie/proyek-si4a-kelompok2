@@ -46,7 +46,7 @@
                 <tbody>
                 @foreach ($ruangan as $item)
                 <tr class="text-center">
-                    <td>{{ $item->id }}</td>
+                    <td>{{ $loop->iteration }}</td>
                     <td>{{ $item->kode_ruangan }}</td>
                     <td>{{ $item->lantai_ruangan }}</td>
                     <td>{{ $item->jumlah_kursi }}</td>
@@ -56,10 +56,12 @@
                         <a href="{{ route('ruangan.edit', $item->id) }}" class="btn btn-warning">Edit</a>
                         @endcan
                         @can('delete', $item)
-                        <form action="{{ route('ruangan.destroy', $item->id) }}" method="POST" class="d-inline" onsubmit="return confirm('Apakah anda yakin ingin menghapus ruangan ini?');">
+                        <form action="{{ route('ruangan.destroy', $item->id) }}" method="POST" class="d-inline">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-danger">Delete</button>
+                            <button type="submit" class="btn btn-danger show_confirm"
+                            data-toggle="tooltip" title='Delete'
+                            data-nama='{{ $item->kode_ruangan }}'>Delete</button>
                         </form>
                         @endcan
                     </td>

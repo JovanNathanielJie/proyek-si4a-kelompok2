@@ -72,7 +72,7 @@ class RuanganController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Ruangan $ruangan)
+    public function update(Request $request, $ruangan)
     {
         $ruangan = Ruangan::FindOrFail($ruangan);
         // Cek izin update
@@ -96,9 +96,9 @@ class RuanganController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Request $request, Ruangan $ruangan)
+    public function destroy(Request $request, $ruangan)
     {
-        $ruangan = Ruangan::findOrFail($ruangan->id); // Find the room by ID or fail
+        $ruangan = Ruangan::findOrFail($ruangan); // Find the room by ID or fail
         // Cek izin delete
         if ($request->user()->cannot('delete', $ruangan)) {
             abort(403, 'Unauthorized action.');

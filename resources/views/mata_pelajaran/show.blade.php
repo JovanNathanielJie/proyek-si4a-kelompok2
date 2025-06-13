@@ -22,10 +22,6 @@
             <div class="card-body">
                 <table class="table table-bordered table-striped">
                     <tr>
-                        <th>No</th>
-                        <td>{{ $mataPelajaran->id }}</td>
-                    </tr>
-                    <tr>
                         <th>Kode Mapel</th>
                         <td>{{ $mataPelajaran->kode_mapel }}</td>
                     </tr>

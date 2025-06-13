@@ -45,7 +45,7 @@
 
                 @foreach ($jadwalSekolah as $item)
                 <tr class="text-center">
-                    <td>{{ $item->id}}</td>
+                    <td>{{ $loop->iteration}}</td>
                     <td>{{ $item->hari_sekolah }}</td>
                     <td>{{ $item->jam_mulai }}</td>
                     <td>{{ $item->jam_selesai }}</td>
