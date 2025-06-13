@@ -38,6 +38,9 @@ class JadwalMapelController extends Controller
      */
     public function store(Request $request)
     {
+        if ($request->user()->cannot('create', JadwalMapel::class)) {
+            abort(403, 'Unauthorized action.');
+        }
         // Validate the request data
         $input = $request->validate([
             'mata_pelajaran_id' => 'required|exists:mata_pelajaran,id',
@@ -78,6 +81,11 @@ class JadwalMapelController extends Controller
      */
     public function update(Request $request, JadwalMapel $jadwalMapel)
     {
+        $jadwalMapel = JadwalMapel::FindOrFail($jadwalMapel);
+        // Cek izin update
+        if ($request->user()->cannot('update', $jadwalMapel)) {
+            abort(403, 'Unauthorized action.');
+        }
         // Validate the request data
         $input = $request->validate([
             'mata_pelajaran_id' => 'required|exists:mata_pelajaran,id',
@@ -94,9 +102,12 @@ class JadwalMapelController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(JadwalMapel $jadwalMapel)
+    public function destroy(Request $request, JadwalMapel $jadwalMapel)
     {
         $jadwalMapel = JadwalMapel::findOrFail($jadwalMapel->id); // SQL: SELECT * FROM jadwal_mapel WHERE id = ?
+        if ($request->user()->cannot('delete', $jadwalMapel)) {
+            abort(403, 'Unauthorized action.');
+        }
         // Delete the lesson schedule record
         $jadwalMapel->delete();
 

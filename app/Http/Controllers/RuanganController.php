@@ -33,6 +33,10 @@ class RuanganController extends Controller
      */
     public function store(Request $request)
     {
+        // Cek izin create
+        if ($request->user()->cannot('create', Ruangan::class)) {
+            abort(403, 'Unauthorized action.');
+        }
         // Validate the request data
         $input = $request->validate([
             'kode_ruangan' => 'required|string|max:3',
@@ -70,6 +74,11 @@ class RuanganController extends Controller
      */
     public function update(Request $request, Ruangan $ruangan)
     {
+        $ruangan = Ruangan::FindOrFail($ruangan);
+        // Cek izin update
+        if ($request->user()->cannot('update', $ruangan)) {
+            abort(403, 'Unauthorized action.');
+        }
         // Validate the request data
         $input = $request->validate([
             'kode_ruangan' => 'required|string|max:3',
@@ -87,9 +96,13 @@ class RuanganController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Ruangan $ruangan)
+    public function destroy(Request $request, Ruangan $ruangan)
     {
         $ruangan = Ruangan::findOrFail($ruangan->id); // Find the room by ID or fail
+        // Cek izin delete
+        if ($request->user()->cannot('delete', $ruangan)) {
+            abort(403, 'Unauthorized action.');
+        }
         // Delete the room record
         $ruangan->delete();
 

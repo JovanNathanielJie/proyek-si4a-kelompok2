@@ -33,6 +33,10 @@ class MataPelajaranController extends Controller
      */
     public function store(Request $request)
     {
+        // Cek izin create
+        if ($request->user()->cannot('create', MataPelajaran::class)) {
+            abort(403, 'Unauthorized action.');
+        }
         // Validate the request data
         $input = $request->validate([
             'kode_mapel' => 'required|string|max:10|unique:mata_pelajaran,kode_mapel',
@@ -72,6 +76,11 @@ class MataPelajaranController extends Controller
      */
     public function update(Request $request, MataPelajaran $mataPelajaran)
     {
+        $mataPelajaran = MataPelajaran::FindOrFail($mataPelajaran);
+        // Cek izin update
+        if ($request->user()->cannot('update', $mataPelajaran)) {
+            abort(403, 'Unauthorized action.');
+        }
         // Validate the request data
         $input = $request->validate([
             'kode_mapel' => 'required|string|max:10|unique:mata_pelajaran,kode_mapel,' . $mataPelajaran->id,
@@ -91,10 +100,14 @@ class MataPelajaranController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(MataPelajaran $mataPelajaran)
+    public function destroy(Request $request, MataPelajaran $mataPelajaran)
     {
         // Validate that the subject exists
         $mataPelajaran = MataPelajaran::findOrFail($mataPelajaran->id);
+        // Cek izin delete
+        if ($request->user()->cannot('delete', $mataPelajaran)) {
+            abort(403, 'Unauthorized action.');
+        }
         // Find the subject by ID and delete it
         $mataPelajaran->delete();
 

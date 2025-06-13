@@ -33,6 +33,10 @@ class PengajarController extends Controller
      */
     public function store(Request $request)
     {
+        // Cek izin create
+        if ($request->user()->cannot('create', Pengajar::class)) {
+            abort(403, 'Unauthorized action.');
+        }
         // Validate the request data
         $input = $request->validate([
             'nama_pengajar' => 'required|string|max:100',
@@ -73,6 +77,11 @@ class PengajarController extends Controller
      */
     public function update(Request $request, Pengajar $pengajar)
     {
+        $pengajar = Pengajar::findOrFail($pengajar);
+        // Cek izin update
+        if ($request->user()->cannot('update', $pengajar)) {
+            abort(403, 'Unauthorized action.');
+        }
         // Validate the request data
         $input = $request->validate([
             'nama_pengajar' => 'required|string|max:100',
@@ -93,9 +102,13 @@ class PengajarController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Pengajar $pengajar)
+    public function destroy(Request $request, Pengajar $pengajar)
     {
         $pengajar = Pengajar::findOrFail($pengajar->id); // Find the teacher by ID or fail
+        // Cek izin delete
+        if ($request->user()->cannot('delete', $pengajar)) {
+            abort(403, 'Unauthorized action.');
+        }
         // Delete the teacher record
         $pengajar->delete();
 

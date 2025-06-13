@@ -33,6 +33,10 @@ class SekolahController extends Controller
      */
     public function store(Request $request)
     {
+        // Cek izin create
+        if ($request->user()->cannot('create', Sekolah::class)) {
+            abort(403, 'Unauthorized action.');
+        }
         // Validate the request data
         $input = $request->validate([
             'nama_sekolah' => 'required|string|max:100|unique:sekolah,nama_sekolah',
@@ -73,6 +77,10 @@ class SekolahController extends Controller
     public function update(Request $request, $sekolah)
     {
         $sekolah = Sekolah::findOrFail($sekolah); // Find the school by ID or fail
+        // Cek izin update
+        if ($request->user()->cannot('update', $sekolah)) {
+            abort(403, 'Unauthorized action.');
+        }
         // Validate the request data
         $input = $request->validate([
             'nama_sekolah' => 'required|string|max:100|unique:sekolah,nama_sekolah,' . $sekolah->id,
@@ -87,9 +95,13 @@ class SekolahController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy($sekolah)
+    public function destroy(Request $request, $sekolah)
     {
         $sekolah = Sekolah::findOrFail($sekolah); // Find the school by ID or fail
+        // Cek izin delete
+        if ($request->user()->cannot('delete', $sekolah)) {
+            abort(403, 'Unauthorized action.');
+        }
         // Delete the school record
         $sekolah->delete();
         // Redirect to the index page with a success message

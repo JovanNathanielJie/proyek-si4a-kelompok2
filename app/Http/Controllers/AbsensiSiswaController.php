@@ -39,6 +39,9 @@ class AbsensiSiswaController extends Controller
      */
     public function store(Request $request)
     {
+        if ($request->user()->cannot('create', AbsensiSiswa::class)) {
+            abort(403, 'Unauthorized action.');
+        }
         // Validate the request data
         $input = $request->validate([
             'siswa_id' => 'required|exists:siswa,id',
@@ -66,6 +69,7 @@ class AbsensiSiswaController extends Controller
      */
     public function edit(AbsensiSiswa $absensiSiswa)
     {
+        $absensiSiswa = AbsensiSiswa::FindOrFail($absensiSiswa);
         // Return the view to edit the student attendance record
         return view('absensi_siswa.edit', compact('absensiSiswa'));
     }
@@ -75,6 +79,11 @@ class AbsensiSiswaController extends Controller
      */
     public function update(Request $request, AbsensiSiswa $absensiSiswa)
     {
+        $absensiSiswa = AbsensiSiswa::findOrFail($absensiSiswa);
+        // Cek izin update
+        if ($request->user()->cannot('update', $absensiSiswa)) {
+            abort(403, 'Unauthorized action.');
+        }
         // Validate the request data
         $input = $request->validate([
             'siswa_id' => 'required|exists:siswa,id',
@@ -91,9 +100,12 @@ class AbsensiSiswaController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(AbsensiSiswa $absensiSiswa)
+    public function destroy(Request $request, AbsensiSiswa $absensiSiswa)
     {
         $absensiSiswa = AbsensiSiswa::findOrFail($absensiSiswa->id); // Find the student attendance record by ID or fail
+        if ($request->user()->cannot('delete', $absensiSiswa)) {
+            abort(403, 'Unauthorized action.');
+        }
         // Delete the student attendance record
         $absensiSiswa->delete();
 

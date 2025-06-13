@@ -36,6 +36,10 @@ class SiswaController extends Controller
      */
     public function store(Request $request)
     {
+        // Cek izin create
+        if ($request->user()->cannot('create', Siswa::class)) {
+            abort(403, 'Unauthorized action.');
+        }
         // Validate the request data
         $input = $request->validate([
             'nama_siswa' => 'required|string|max:100',
@@ -80,6 +84,11 @@ class SiswaController extends Controller
      */
     public function update(Request $request, Siswa $siswa)
     {
+        $siswa = Siswa::FindOrFail($siswa);
+        // Cek izin update
+        if ($request->user()->cannot('update', $siswa)) {
+            abort(403, 'Unauthorized action.');
+        }
         // Validate the request data
         $input = $request->validate([
             'nama_siswa' => 'required|string|max:100',
@@ -102,9 +111,13 @@ class SiswaController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Siswa $siswa)
+    public function destroy(Request $request, Siswa $siswa)
     {
         $siswa = Siswa::findOrFail($siswa->id); // Find the student by ID or fail
+        // Cek izin delete
+        if ($request->user()->cannot('delete', $siswa)) {
+            abort(403, 'Unauthorized action.');
+        }
         // Delete the student record
         $siswa->delete();
 

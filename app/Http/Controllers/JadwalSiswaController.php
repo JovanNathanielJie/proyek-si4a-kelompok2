@@ -39,6 +39,10 @@ class JadwalSiswaController extends Controller
      */
     public function store(Request $request)
     {
+        // Cek izin create
+        if ($request->user()->cannot('create', JadwalSiswa::class)) {
+            abort(403, 'Unauthorized action.');
+        }
         // Validate the request data
         $input = $request->validate([
             'siswa_id' => 'required|exists:siswa,id',
@@ -79,6 +83,11 @@ class JadwalSiswaController extends Controller
      */
     public function update(Request $request, JadwalSiswa $jadwalSiswa)
     {
+         $jadwalSiswa = JadwalSiswa::findOrFail($jadwalSiswa);
+        // Cek izin update
+        if ($request->user()->cannot('update', $jadwalSiswa)) {
+            abort(403, 'Unauthorized action.');
+        }
         // Validate the request data
         $input = $request->validate([
             'siswa_id' => 'required|exists:siswa,id',
@@ -95,10 +104,14 @@ class JadwalSiswaController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(JadwalSiswa $jadwalSiswa)
+    public function destroy(Request $request, JadwalSiswa $jadwalSiswa)
     {
         // Check if the student schedule exists
         $jadwalSiswa = JadwalSiswa::findOrFail($jadwalSiswa->id); // Find the student schedule by ID or fail
+        // Cek izin delete
+        if ($request->user()->cannot('delete', $jadwalSiswa)) {
+            abort(403, 'Unauthorized action.');
+        }
         // Delete the student schedule record
         $jadwalSiswa->delete();
 

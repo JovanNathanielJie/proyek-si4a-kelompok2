@@ -36,6 +36,9 @@ class JadwalLesController extends Controller
      */
     public function store(Request $request)
     {
+        if ($request->user()->cannot('create',JadwalLes::class)) {
+            abort(403, 'Unauthorized action.');
+        }
         // Validate the request data
         $input = $request->validate([
             'tanggal_les' => 'required|date',
@@ -75,6 +78,11 @@ class JadwalLesController extends Controller
      */
     public function update(Request $request, JadwalLes $jadwalLes)
     {
+        $jadwalLes = JadwalLes::FindOrFail($jadwalLes);
+        // Cek izin update
+        if ($request->user()->cannot('update', $jadwalLes)) {
+            abort(403, 'Unauthorized action.');
+        }
         // Validate the request data
         $input = $request->validate([
             'tanggal_les' => 'required|date',
@@ -92,14 +100,16 @@ class JadwalLesController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(JadwalLes $jadwalLes)
+    public function destroy(Request $request, JadwalLes $jadwalLes)
     {
         // Find the lesson schedule by ID or fail
         $jadwalLes = JadwalLes::findOrFail($jadwalLes->id);
-
+        // Cek izin delete
+        if ($request->user()->cannot('delete', $jadwalLes)) {
+            abort(403, 'Unauthorized action.');
+        }
         // Delete the lesson schedule record
         $jadwalLes->delete();
-
         // Redirect to the index page with a success message
         return redirect()->route('jadwal_les.index')->with('success', 'Jadwal les berhasil dihapus.');
     }

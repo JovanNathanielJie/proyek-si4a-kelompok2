@@ -33,6 +33,10 @@ class KehadiranController extends Controller
      */
     public function store(Request $request)
     {
+        // Cek izin create
+        if ($request->user()->cannot('create', Kehadiran::class)) {
+            abort(403, 'Unauthorized action.');
+        }
         // Validate the request data
         $input = $request->validate([
             'departemen' => 'required|string|max:50',
@@ -70,6 +74,11 @@ class KehadiranController extends Controller
      */
     public function update(Request $request, Kehadiran $kehadiran)
     {
+        $kehadiran = Kehadiran::findOrFail($kehadiran);
+        // Cek izin update
+        if ($request->user()->cannot('update', $kehadiran)) {
+            abort(403, 'Unauthorized action.');
+        }
         // Validate the request data
         $input = $request->validate([
             'departemen' => 'required|string|max:50',
@@ -87,9 +96,13 @@ class KehadiranController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Kehadiran $kehadiran)
+    public function destroy(Request $request, Kehadiran $kehadiran)
     {
         $kehadiran = Kehadiran::findOrFail($kehadiran->id);
+        // Cek izin delete
+        if ($request->user()->cannot('delete', $kehadiran)) {
+            abort(403, 'Unauthorized action.');
+        }
         // Delete the attendance record
         $kehadiran->delete();
 

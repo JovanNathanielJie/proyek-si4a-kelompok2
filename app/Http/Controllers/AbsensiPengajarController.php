@@ -39,6 +39,9 @@ class AbsensiPengajarController extends Controller
      */
     public function store(Request $request)
     {
+        if($request->user()->cannot('create', AbsensiPengajar::class)) {
+            abort(403, 'Unauthorized action.');
+        }
         // Validate the request data
         $input = $request->validate([
             'pengajar_id' => 'required|exists:pengajar,id',
@@ -73,6 +76,10 @@ class AbsensiPengajarController extends Controller
      */
     public function update(Request $request, AbsensiPengajar $absensiPengajar)
     {
+        $absensiPengajar = AbsensiPengajar::FindOrFail($absensiPengajar);
+        if($request->user()->cannot('update', AbsensiPengajar::class)) {
+            abort(403, 'Unauthorized action.');
+        }
         // Validate the request data
         $input = $request->validate([
             'pengajar_id' => 'required|exists:pengajar,id',
@@ -87,9 +94,12 @@ class AbsensiPengajarController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(AbsensiPengajar $absensiPengajar)
+    public function destroy(Request $request, AbsensiPengajar $absensiPengajar)
     {
         $absensiPengajar = AbsensiPengajar::findOrFail($absensiPengajar->id); // Find the teacher attendance record by ID or fail
+        if($request->user()->cannot('delete', AbsensiPengajar::class)) {
+            abort(403, 'Unauthorized action.');
+        }
         // Delete the teacher attendance record
         $absensiPengajar->delete();
         // Redirect to the index page with a success message

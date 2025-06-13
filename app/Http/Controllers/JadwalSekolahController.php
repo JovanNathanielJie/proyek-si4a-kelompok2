@@ -36,6 +36,9 @@ class JadwalSekolahController extends Controller
      */
     public function store(Request $request)
     {
+        if ($request->user()->cannot('create', JadwalSekolah::class)) {
+            abort(403, 'Unauthorized action.');
+        }
         // Validate the request data
         $input = $request->validate([
             'hari_sekolah' => 'required|string|max:20',
@@ -76,6 +79,11 @@ class JadwalSekolahController extends Controller
      */
     public function update(Request $request, JadwalSekolah $jadwalSekolah)
     {
+        $jadwalSekolah = JadwalSekolah::FindOrFail($jadwalSekolah);
+        // Cek izin update
+        if ($request->user()->cannot('update', $jadwalSekolah)) {
+            abort(403, 'Unauthorized action.');
+        }
         // Validate the request data
         $input = $request->validate([
             'hari_sekolah' => 'required|string|max:20',
@@ -94,10 +102,14 @@ class JadwalSekolahController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(JadwalSekolah $jadwalSekolah)
+    public function destroy(Request $request, JadwalSekolah $jadwalSekolah)
     {
         // Check if the school schedule exists
         $jadwalSekolah = JadwalSekolah::findOrFail($jadwalSekolah->id); // Find the schedule by ID or fail
+        // Cek izin delete
+        if ($request->user()->cannot('delete', $jadwalSekolah)) {
+            abort(403, 'Unauthorized action.');
+        }
         // Delete the school schedule record
         $jadwalSekolah->delete();
 

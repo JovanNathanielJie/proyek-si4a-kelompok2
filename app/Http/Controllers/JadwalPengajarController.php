@@ -39,6 +39,9 @@ class JadwalPengajarController extends Controller
      */
     public function store(Request $request)
     {
+        if ($request->user()->cannot('create', JadwalPengajar::class)) {
+            abort(403, 'Unauthorized action.');
+        }
         // Validate the request data
         $input = $request->validate([
             'pengajar_id' => 'required|exists:pengajar,id',
@@ -79,6 +82,10 @@ class JadwalPengajarController extends Controller
      */
     public function update(Request $request, JadwalPengajar $jadwalPengajar)
     {
+        $jadwalPengajar = JadwalPengajar::FindOrFail($jadwalPengajar);
+        if ($request->user()->cannot('update', $jadwalPengajar)) {
+            abort(403, 'Unauthorized action.');
+        }
         // Validate the request data
         $input = $request->validate([
             'pengajar_id' => 'required|exists:pengajar,id',
@@ -95,9 +102,12 @@ class JadwalPengajarController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(JadwalPengajar $jadwalPengajar)
+    public function destroy(Request $request, JadwalPengajar $jadwalPengajar)
     {
         $jadwalPengajar = JadwalPengajar::findOrFail($jadwalPengajar->id); // SQL: SELECT * FROM jadwal_pengajar WHERE id = ?
+        if ($request->user()->cannot('delete', $jadwalPengajar)) {
+            abort(403, 'Unauthorized action.');
+        }
         // Delete the teaching schedule record
         $jadwalPengajar->delete();
 
