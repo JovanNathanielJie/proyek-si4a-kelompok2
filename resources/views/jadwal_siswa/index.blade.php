@@ -33,6 +33,7 @@
                             <th>Hari Les</th>
                             <th>Jam</th>
                             <th>Mapel</th>
+                            <th>Ruangan</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
