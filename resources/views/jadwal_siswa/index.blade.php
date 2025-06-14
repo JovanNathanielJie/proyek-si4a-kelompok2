@@ -50,6 +50,7 @@
                                         {{ \Carbon\Carbon::parse($jadwalMapel->mataPelajaran->waktu_selesai)->format('H:i') }}
                                     </td>
                                     <td>{{ $jadwalMapel->mataPelajaran->nama_mapel ?? '-' }}</td>
+                                    <td>{{ $item->jadwalLes->ruangan->kode_ruangan ?? '-' }}</td>
                                     <td>
                                         <a href="{{ route('jadwal_siswa.show', $jadwal->id) }}" class="btn btn-info">Show</a>
                                         @can('update', $jadwal)
