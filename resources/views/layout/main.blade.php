@@ -365,6 +365,14 @@
                         <p>Jadwal Les</p>
                     </a>
                 </li>
+                @if(auth()->user()->role === 'pemilik')
+               <li class="nav-item">
+                    <a class='nav-link' href='{{ url('jadwal_mapel')}}'>
+                    <i class="nav-icon bi bi-calendar-range"></i>
+                        <p>Jadwal Mata Pelajaran</p>
+                    </a>
+                </li>
+                @endif
                 @if(auth()->user()->role === 'siswa' || auth()->user()->role === 'pemilik')
                 <li class="nav-item">
                     <a class='nav-link' href='{{ url('jadwal_siswa')}}'>
@@ -378,14 +386,6 @@
                     <a class='nav-link' href='{{ url('jadwal_pengajar')}}'>
                     <i class="nav-icon bi bi-calendar-check"></i>
                         <p>Jadwal Pengajar</p>
-                    </a>
-                </li>
-                @endif
-                @if(auth()->user()->role === 'pemilik')
-               <li class="nav-item">
-                    <a class='nav-link' href='{{ url('jadwal_mapel')}}'>
-                    <i class="nav-icon bi bi-calendar-range"></i>
-                        <p>Jadwal Mata Pelajaran</p>
                     </a>
                 </li>
                 @endif

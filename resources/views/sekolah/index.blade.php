@@ -31,7 +31,7 @@
         </div>
         <div class="card-body">
             @if($sekolah->isEmpty())
-                <p class="text-center">Belum ada data kehadiran.</p>
+                <p class="text-center">Belum ada data sekolah.</p>
             @else
             <table class="table table-bordered table-striped">
                 <tr class="text-center">
