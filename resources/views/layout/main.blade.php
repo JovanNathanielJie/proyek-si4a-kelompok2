@@ -225,9 +225,7 @@
                 <!--begin::Menu Body-->
                 <!--end::Menu Body-->
                 <!--begin::Menu Footer-->
-                <li class="user-footer d-flex justify-content-between">
-                      <!-- Profile Link -->
-                  <a href="#" class="btn btn-default btn-flat">Profile</a>
+                <li class="user-footer d-flex justify-content-center">
                       <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
@@ -289,6 +287,7 @@
             </a>
             </li>
 
+            @if(auth()->user()->role === 'pemilik')
             <li class="nav-item">
                 <a class="nav-link d-flex justify-content-between align-items-center" data-bs-toggle="collapse" href="#sekolahSubmenu" role="button" aria-expanded="false" aria-controls="kehadiranSubmenu">
                 <span class="d-flex align-items-center">
@@ -314,6 +313,7 @@
                 </ul>
                 </div>
             </li>
+            @endif
 
             <li class="nav-item">
             <a class='nav-link' href='{{ url('ruangan')}}'>
@@ -322,26 +322,32 @@
             </a>
             </li>
 
+            @if(auth()->user()->role === 'pemilik')
             <li class="nav-item">
             <a class='nav-link' href='{{ url('mata_pelajaran')}}'>
                 <i class="nav-icon bi bi-journal-bookmark"></i>
                 <p>Mata Pelajaran</p>
             </a>
             </li>
+            @endif
 
+            @if(auth()->user()->role === 'siswa' || auth()->user()->role === 'pemilik')
             <li class="nav-item">
             <a class='nav-link' href='{{ url('siswa')}}'>
                 <i class="nav-icon bi bi-people"></i>
                 <p>Siswa</p>
             </a>
             </li>
+            @endif
 
+            @if(auth()->user()->role === 'pengajar' || auth()->user()->role === 'pemilik')
             <li class="nav-item">
             <a class='nav-link' href='{{ url('pengajar')}}'>
                 <i class="nav-icon bi bi-person-badge"></i>
                 <p>Pengajar</p>
             </a>
             </li>
+            @endif
 
             <li class="nav-item">
                 <a class="nav-link d-flex justify-content-between align-items-center" data-bs-toggle="collapse" href="#jadwalSubmenu" role="button" aria-expanded="false" aria-controls="kehadiranSubmenu">
@@ -359,24 +365,30 @@
                         <p>Jadwal Les</p>
                     </a>
                 </li>
+                @if(auth()->user()->role === 'siswa' || auth()->user()->role === 'pemilik')
                 <li class="nav-item">
                     <a class='nav-link' href='{{ url('jadwal_siswa')}}'>
                     <i class="nav-icon bi bi-calendar3"></i>
                         <p>Jadwal Siswa</p>
                     </a>
                 </li>
+                @endif
+                @if(auth()->user()->role === 'pengajar' || auth()->user()->role === 'pemilik')
                 <li class="nav-item">
                     <a class='nav-link' href='{{ url('jadwal_pengajar')}}'>
                     <i class="nav-icon bi bi-calendar-check"></i>
                         <p>Jadwal Pengajar</p>
                     </a>
                 </li>
+                @endif
+                @if(auth()->user()->role === 'pemilik')
                <li class="nav-item">
                     <a class='nav-link' href='{{ url('jadwal_mapel')}}'>
                     <i class="nav-icon bi bi-calendar-range"></i>
                         <p>Jadwal Mata Pelajaran</p>
                     </a>
                 </li>
+                @endif
             </ul>
             </div>
         </li>
@@ -391,21 +403,27 @@
             </a>
             <div class="collapse ps-3" id="kehadiranSubmenu">
             <ul class="nav flex-column">
+                @if(auth()->user()->role === 'pemilik')
                 <li class="nav-item">
                 <a class="nav-link" href="{{ url('kehadiran') }}">
                     <i class="bi bi-clipboard-check"></i> <p>Kehadiran</p>
                 </a>
                 </li>
+                @endif
+                @if(auth()->user()->role === 'siswa' || auth()->user()->role === 'pemilik')
                 <li class="nav-item">
                 <a class="nav-link" href="{{ url('absensi_siswa') }}">
                     <i class="bi bi-check2-square"></i> <p>Absensi Siswa</p>
                 </a>
                 </li>
+                @endif
+                @if(auth()->user()->role === 'pengajar' || auth()->user()->role === 'pemilik')
                 <li class="nav-item">
                 <a class="nav-link" href="{{ url('absensi_pengajar') }}">
                     <i class="bi bi-check2-square"></i> <p>Absensi Pengajar</p>
                 </a>
                 </li>
+                @endif
             </ul>
                 </div>
             </li>

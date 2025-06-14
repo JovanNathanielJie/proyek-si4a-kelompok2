@@ -72,12 +72,18 @@
             <strong>Pencarian Kehadiran Siswa</strong>
         </div>
         <div class="card-body">
+            @can('akses-pencarian-kehadiran')
             <form method="GET" action="{{ route('dashboard') }}" class="mb-4">
                 <div class="input-group">
                     <input type="text" name="nama_siswa" class="form-control" placeholder="Masukkan nama siswa..." value="{{ old('nama_siswa', request('nama_siswa')) }}">
                     <button class="btn btn-outline-primary">Cari</button>
                 </div>
             </form>
+            @else
+            <div class="alert alert-warning mb-0">
+                <i class="bi bi-lock-fill me-2"></i> Pencarian kehadiran hanya dapat dilakukan oleh user dengan akses <strong>"pemilik"</strong>.
+            </div>
+            @endcan
 
             @if(request()->has('nama_siswa'))
     @if($siswa)
