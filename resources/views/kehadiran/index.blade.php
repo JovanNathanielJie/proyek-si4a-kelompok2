@@ -51,9 +51,9 @@
                     <td>{{ \Carbon\Carbon::parse($item->tanggal)->format('d M Y') }}</td>
                     <td>{{ $item->jam_hadir }}</td>
                     <td>
-                        <a href="{{ route('kehadiran.show', $item->id) }}" class="btn btn-info btn-sm">Show</a>
+                        <a href="{{ route('kehadiran.show', $item->id) }}" class="btn btn-info">Show</a>
                         @can('update', $item)
-                        <a href="{{ route('kehadiran.edit', $item->id) }}" class="btn btn-warning btn-sm">Edit</a>
+                        <a href="{{ route('kehadiran.edit', $item->id) }}" class="btn btn-warning">Edit</a>
                         @endcan
                         @can('delete', $item)
                         <form action="{{ route('kehadiran.destroy', $item->id) }}" method="POST" class="d-inline">
