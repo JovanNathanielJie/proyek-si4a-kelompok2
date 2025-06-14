@@ -41,15 +41,15 @@
                                 <td>{{ $mapel->mataPelajaran->nama_mapel ?? '-' }}</td>
                                 <td>{{ $item->jadwalLes->ruangan->kode_ruangan ?? '-' }}</td>
                                 <td>
-                                    <a href="{{ route('jadwal_pengajar.show', $item->id) }}" class="btn btn-info btn-sm">Show</a>
+                                    <a href="{{ route('jadwal_pengajar.show', $item->id) }}" class="btn btn-info">Show</a>
                                     @can('update', $item)
-                                    <a href="{{ route('jadwal_pengajar.edit', $item->id) }}" class="btn btn-warning btn-sm">Edit</a>
+                                    <a href="{{ route('jadwal_pengajar.edit', $item->id) }}" class="btn btn-warning">Edit</a>
                                     @endcan
                                     @can('delete', $item)
                                     <form action="{{ route('jadwal_pengajar.destroy', $item->id) }}" method="POST" class="d-inline">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-danger btn-sm show_confirm"
+                                        <button type="submit" class="btn btn-danger show_confirm"
                                             data-nama='{{ $item->pengajar->nama_pengajar }}'>Delete</button>
                                     </form>
                                     @endcan
