@@ -34,25 +34,34 @@ class DashboardController extends Controller
             ->groupBy('jenis_kelamin')
             ->pluck('total', 'jenis_kelamin');
 
-        // Tambahan: Pencarian siswa & statistik kehadirannya
-    $namaSiswa = $request->input('nama_siswa');
+        // Statistik Jumlah Kursi
+        $jumlahKursiPerRuangan = DB::table('ruangan')
+        ->select('kode_ruangan', 'jumlah_kursi')
+        ->get();
+
+        // Statistik Jumlah Siswa Per Kelas
+        $jumlahSiswaPerKelas = \App\Models\Siswa::all()
+        ->groupBy('kelas')
+        ->map(function ($group) {
+            return count($group);
+        });
+
+        // Statistik Jumlah Siswa Per Sekolah
+        $jumlahSiswaPerSekolah = DB::table('siswa')
+        ->join('sekolah', 'siswa.sekolah_id', '=', 'sekolah.id')
+        ->select('sekolah.nama_sekolah', DB::raw('count(*) as total'))
+        ->groupBy('sekolah.nama_sekolah')
+        ->get();
+// Pencarian Kehadiran Siswa
+$namaSiswa = $request->query('nama_siswa');
     $siswa = null;
-    $statistikKehadiranSiswa = null;
-    $persentaseKehadiran = null;
+    $jumlahHadir = 0;
 
     if ($namaSiswa) {
-        $siswa = Siswa::where('nama_siswa', 'like', '%' . $namaSiswa . '%')->first();
+       $siswa = Siswa::whereRaw('LOWER(nama_siswa) = ?', [strtolower($request->nama_siswa)])->first();
 
         if ($siswa) {
-            $totalHadir = AbsensiSiswa::where('siswa_id', $siswa->id)->where('kehadiran_id', 1)->count(); // ID 1 = Hadir
-            $totalPertemuan = AbsensiSiswa::where('siswa_id', $siswa->id)->count();
-
-            $persentaseKehadiran = $totalPertemuan > 0 ? round(($totalHadir / $totalPertemuan) * 100, 2) : 0;
-
-            $statistikKehadiranSiswa = AbsensiSiswa::select('kehadiran_id', DB::raw('count(*) as jumlah'))
-                ->where('siswa_id', $siswa->id)
-                ->groupBy('kehadiran_id')
-                ->get();
+            $jumlahHadir = \App\Models\AbsensiSiswa::where('siswa_id', $siswa->id)->count();
         }
     }
 
@@ -62,10 +71,11 @@ return view('dashboard.index', [
     'jumlahPerempuan' => $jumlahSiswa['P'] ?? 0,
     'jumlahPengajarLaki' => $jumlahPengajar['L'] ?? 0,
     'jumlahPengajarPerempuan' => $jumlahPengajar['P'] ?? 0,
-
+    'jumlahKursiPerRuangan' => $jumlahKursiPerRuangan,
+    'jumlahSiswaPerKelas' => $jumlahSiswaPerKelas,
+    'jumlahSiswaPerSekolah' => $jumlahSiswaPerSekolah,
     'siswa' => $siswa,
-    'statistikKehadiranSiswa' => $statistikKehadiranSiswa,
-    'persentaseKehadiran' => $persentaseKehadiran,
+    'jumlahHadir' => $jumlahHadir,
     'namaSiswa' => $namaSiswa
 ]);
 }
