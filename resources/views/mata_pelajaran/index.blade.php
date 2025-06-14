@@ -55,12 +55,12 @@
                     <td>{{ \Carbon\Carbon::parse($item->waktu_mulai)->format('H:i') }}</td>
                     <td>{{ \Carbon\Carbon::parse($item->waktu_selesai)->format('H:i') }}</td>
                     <td>
-                        <a href="{{ route('mata_pelajaran.show', $item->id) }}" class="btn btn-info btn-sm">Show</a>
-                        <a href="{{ route('mata_pelajaran.edit', $item->id) }}" class="btn btn-warning btn-sm">Edit</a>
+                        <a href="{{ route('mata_pelajaran.show', $item->id) }}" class="btn btn-info">Show</a>
+                        <a href="{{ route('mata_pelajaran.edit', $item->id) }}" class="btn btn-warning">Edit</a>
                         <form action="{{ route('mata_pelajaran.destroy', $item->id) }}" method="POST" class="d-inline">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-danger btn-sm show_confirm"
+                            <button type="submit" class="btn btn-danger show_confirm"
                             data-toggle="tooltip" title='Delete'
                             data-nama='{{ $item->nama_mapel }}'>Delete</button>
                         </form>
