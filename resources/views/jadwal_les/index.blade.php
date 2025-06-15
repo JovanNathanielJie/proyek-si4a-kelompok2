@@ -30,6 +30,7 @@
                 </div>
             </div>
             <div class="card-body">
+                <div style="overflow-x: auto;">
                 @if($jadwalLes->isEmpty())
                     <p class="text-center">Belum ada data jadwal les.</p>
                 @else
@@ -75,6 +76,7 @@
             </div>
             <!-- /.card-body -->
         </div>
+    </div>
         <!-- /.card -->
     </div>
 </div>
