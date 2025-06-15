@@ -30,6 +30,7 @@
           </div>
         </div>
         <div class="card-body">
+            <div style="overflow-x: auto;">
             @if($pengajar->isEmpty())
                 <p class="text-center">Belum ada data pengajar.</p>
             @else
@@ -83,5 +84,6 @@
       <!-- /.card -->
     </div>
   </div>
+</div>
   <!--end::Row-->
   @endsection

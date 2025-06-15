@@ -9,6 +9,7 @@
                 <h3 class="card-title"><b>List Jadwal Pengajar</b></h3>
             </div>
             <div class="card-body">
+                <div style="overflow-x: auto;">
                 @if($jadwalPengajar->isEmpty())
                     <p class="text-center">Belum ada data jadwal pengajar.</p>
                 @else
@@ -68,6 +69,7 @@
                 @endcan
             </div>
         </div>
+    </div>
     </div>
 </div>
 @endsection

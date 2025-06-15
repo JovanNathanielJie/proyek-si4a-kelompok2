@@ -21,6 +21,7 @@
             </div>
 
             <div class="card-body">
+                <div style="overflow-x: auto;">
                 @if($jadwalSiswa->isEmpty())
                     <p class="text-center">Belum ada data jadwal siswa.</p>
                 @else
@@ -82,6 +83,7 @@
             </div>
         </div>
     </div>
+</div>
 </div>
 <!--end::Row-->
 @endsection

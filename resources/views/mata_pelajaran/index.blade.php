@@ -30,6 +30,7 @@
           </div>
         </div>
         <div class="card-body">
+            <div style="overflow-x: auto;">
             @if($mataPelajaran->isEmpty())
                 <p class="text-center">Belum ada data mata pelajaran.</p>
             @else
@@ -80,6 +81,7 @@
       </div>
       <!-- /.card -->
     </div>
+</div>
 </div>
 <!--end::Row-->
 @endsection
