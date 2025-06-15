@@ -125,7 +125,7 @@
       </iframe>
     </div>
     <p class="mt-3 text-muted">
-      <strong>Alamat:</strong> Jl. R.A. Abusamah, Palembang, Sumatera Selatan, Indonesia
+      <strong>Alamat:</strong> Gg. Sablan, Kepandean Baru, Kec. Ilir Tim. I, Kota Palembang, Sumatera Selatan 30111
     </p>
     <p class="text-muted">
       <strong>Telp:</strong> 0711 ‒ 12345678 | <strong>Email:</strong> info@alwicollege.sch.id
